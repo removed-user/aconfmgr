@@ -27,3 +27,6 @@ RemovePackage f2fs-tools # Tools for Flash-Friendly File System (F2FS)
 RemovePackage edk2-shell # EDK2 UEFI Shell
 RemovePackage espeak-ng # Multi-lingual software speech synthesizer
 RemovePackage darkhttpd # A small and secure static webserver
+RemovePackage linux-api-headers # API headers... totally unnecessary (for my needs) additional vulns; always remove if present
+RemovePackage rp-pppoe # Point-to-Point Protocol over Ethernet unneeded
+

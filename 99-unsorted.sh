@@ -1,6 +1,6 @@
 
 
-# Thu Jan 29 03:43:01 UTC 2026 - Unknown packages
+# Thu Jan 29 06:18:47 UTC 2026 - Unknown packages
 
 
 AddPackage alsa-utils # Advanced Linux Sound Architecture - Utilities
@@ -110,7 +110,6 @@ AddPackage power-profiles-daemon # Makes power profiles handling available over 
 AddPackage pv # A terminal-based tool for monitoring the progress of data through a pipeline
 AddPackage realtime-privileges # Realtime privileges for users
 AddPackage refind # An EFI boot manager
-AddPackage rp-pppoe # Roaring Penguin's Point-to-Point Protocol over Ethernet client
 AddPackage rtkit # Realtime Policy and Watchdog Daemon
 AddPackage rxvt-unicode-terminfo # Terminfo files for urxvt
 AddPackage sddm # QML based X11 and Wayland display manager
@@ -161,7 +160,7 @@ AddPackage yad # A fork of zenity - display graphical dialogs from shell scripts
 AddPackage zip # Compressor/archiver for creating and modifying zipfiles
 
 
-# Thu Jan 29 03:43:06 UTC 2026 - Unknown foreign packages
+# Thu Jan 29 06:18:51 UTC 2026 - Unknown foreign packages
 
 
 AddPackage --foreign cachy-chroot # Chroot helper for CachyOS
@@ -184,7 +183,7 @@ AddPackage --foreign nvidia-module-extractor # Extracts nvidia kernel modules to
 AddPackage --foreign xf86-video-vmware # X.org vmware video driver
 
 
-# Thu Jan 29 03:43:06 UTC 2026 - New / changed files
+# Thu Jan 29 06:18:51 UTC 2026 - New / changed files
 
 
 CreateFile /etc/.pwd.lock 600 > /dev/null
@@ -391,6 +390,8 @@ CopyFile /etc/subuid
 CreateFile /etc/subuid- > /dev/null
 CreateFile /etc/sysctl.d/1-local.conf > /dev/null
 CopyFile /etc/sysctl.d/99-local.conf
+CopyFile /etc/sysctl.d/hardening.conf
+CopyFile /etc/sysctl.d/network.conf
 CopyFile /etc/systemd/journald.conf
 CopyFile /etc/systemd/logind.conf
 CopyFile /etc/systemd/logind.conf.d/do-not-suspend.conf
@@ -480,6 +481,13 @@ CopyFile /etc/systemd/system/systemd-timedated.service
 CopyFile /etc/systemd/system/systemd-timesyncd.service
 CopyFile /etc/systemd/system/user-runtime-dir@.service
 CopyFile /etc/systemd/system/user@.service
+CreateLink /etc/systemd/system/zed.service /usr/lib/systemd/system/zfs-zed.service
+CreateLink /etc/systemd/system/zfs-import.target.wants/zfs-import-cache.service /usr/lib/systemd/system/zfs-import-cache.service
+CreateLink /etc/systemd/system/zfs-volumes.target.wants/zfs-volume-wait.service /usr/lib/systemd/system/zfs-volume-wait.service
+CreateLink /etc/systemd/system/zfs.target.wants/zfs-import.target /usr/lib/systemd/system/zfs-import.target
+CreateLink /etc/systemd/system/zfs.target.wants/zfs-mount.service /usr/lib/systemd/system/zfs-mount.service
+CreateLink /etc/systemd/system/zfs.target.wants/zfs-share.service /usr/lib/systemd/system/zfs-share.service
+CreateLink /etc/systemd/system/zfs.target.wants/zfs-zed.service /usr/lib/systemd/system/zfs-zed.service
 CopyFile /etc/systemd/systemd-networkd-wait-online@.service
 CopyFile /etc/systemd/systemd-networkd.service
 CopyFile /etc/systemd/timesyncd.conf
@@ -509,11 +517,11 @@ CopyFile /usr/lib/aconfmgr/save.bash 700
 CreateFile /usr/lib/clock-epoch > /dev/null
 CopyFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.alias
 CopyFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.alias.bin
-CopyFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.builtin.alias.bin
-CopyFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.builtin.bin
-CopyFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.dep
+CreateFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.builtin.alias.bin > /dev/null
+CreateFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.builtin.bin > /dev/null
+CreateFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.dep > /dev/null
 CopyFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.dep.bin
-CopyFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.devname
+CreateFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.devname > /dev/null
 CopyFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.softdep
 CopyFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.symbols
 CopyFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.symbols.bin
@@ -537,32 +545,10 @@ CreateDir /var/lib/tpm2-tss/system/keystore 2775 tss UNKNOWN
 CopyFile /version
 
 
-# Thu Jan 29 03:43:09 UTC 2026 - New file properties
+# Thu Jan 29 06:18:54 UTC 2026 - New file properties
 
 
 SetFileProperty /usr/bin/groupmems group UNKNOWN
 SetFileProperty /usr/bin/groupmems mode 2750
 SetFileProperty /usr/share/xdg-desktop-portal/gtk-portals.conf deleted y
 SetFileProperty /usr/share/xdg-desktop-portal/portals/gtk.portal deleted y
-
-
-# Thu Jan 29 04:57:30 UTC 2026 - New / changed files
-
-
-CopyFile /etc/sysctl.d/hardening.conf
-CopyFile /etc/sysctl.d/network.conf
-CopyFile /etc/modprobe.d/blacklist.conf
-CopyFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.alias
-CopyFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.alias.bin
-RemoveFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.builtin.alias.bin
-CreateFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.builtin.alias.bin > /dev/null
-RemoveFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.builtin.bin
-CreateFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.builtin.bin > /dev/null
-RemoveFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.dep
-CreateFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.dep > /dev/null
-CopyFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.dep.bin
-RemoveFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.devname
-CreateFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.devname > /dev/null
-CopyFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.softdep
-CopyFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.symbols
-CopyFile /usr/lib/modules/6.12.58-1-cachyos-lts/modules.symbols.bin
