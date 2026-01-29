@@ -1,0 +1,9 @@
+# /etc/systemd/system/systemd-resolved.socket
+[Unit]
+DefaultDependencies=yes
+Before=sockets.target
+[Socket]
+ListenStream=/run/systemd/resolve/io.systemd.Resolve
+Service=systemd-resolved.service
+[Install]
+WantedBy=sockets.target

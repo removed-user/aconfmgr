@@ -1,0 +1,13 @@
+[Unit]
+Description=Network Name Resolution
+After=network.target
+Documentation=man:systemd-resolved.serrvice(8)
+
+[Service]
+DynamicUser=yes
+Type=notify-reload
+ExecStart=/lib/systemd/systemd-resolved
+User=systemd-resolve
+NonBlocking=yes
+[Install]
+WantedBy=networking.target

@@ -1,0 +1,31 @@
+# Editing /etc/systemd/system/systemd-homed-activate.service.d/override.conf
+## Anything between here and the comment below will become the contents of the drop-in file
+
+
+
+
+
+## /usr/lib/systemd/system/systemd-homed-activate.service
+ #  SPDX-License-Identifier: LGPL-2.1-or-later
+ #
+ #  This file is part of systemd.
+ #
+ #  systemd is free software; you can redistribute it and/or modify it
+ #  under the terms of the GNU Lesser General Public License as published by
+ #  the Free Software Foundation; either version 2.1 of the License, or
+ #  (at your option) any later version.
+ 
+ [Unit]
+ Description=Home Area Activation
+ Documentation=man:systemd-homed.service(8)
+ After=home.mount systemd-homed.service
+ Before=systemd-user-sessions.service
+ 
+ [Service]
+ DynamicUser=yes
+ ExecStop=homectl deactivate-all
+ RemainAfterExit=true
+ Type=oneshot
+ 
+ [Install]
+ WantedBy=systemd-homed.service

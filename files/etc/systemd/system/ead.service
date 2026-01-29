@@ -1,0 +1,21 @@
+## /usr/lib/systemd/system/ead.service
+ [Unit]
+ Description=Ethernet service
+ Documentation=man:ead(8)
+ After=network-pre.target
+ Before=network.target
+ Wants=network.target
+ 
+ [Service]
+DynamicUser=yes
+ Type=simple
+ BusName=net.connman.ead
+ ExecStart=/usr/lib/iwd/ead
+ NotifyAccess=main
+ LimitNPROC=1
+ Restart=on-failure
+ CapabilityBoundingSet""=
+ NoNewPrivileges=true
+ ConfigurationDirectory=/etc
+ StateDirectory=/run
+ StateDirectoryMode=0600

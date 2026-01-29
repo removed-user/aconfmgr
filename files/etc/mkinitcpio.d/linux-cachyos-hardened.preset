@@ -1,0 +1,18 @@
+# mkinitcpio preset file for the 'linux-cachyos-hardened' package
+
+#ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux-cachyos-hardened"
+#ALL_kerneldest="/boot/vmlinuz-linux-cachyos-hardened"
+
+PRESETS=('default')
+#PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux-cachyos-hardened.img"
+#default_uki="/efi/EFI/Linux/arch-linux-cachyos-hardened.efi"
+#default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
+
+#fallback_config="/etc/mkinitcpio.conf"
+#fallback_image="/boot/initramfs-linux-cachyos-hardened-fallback.img"
+#fallback_uki="/efi/EFI/Linux/arch-linux-cachyos-hardened-fallback.efi"
+#fallback_options="-S autodetect"

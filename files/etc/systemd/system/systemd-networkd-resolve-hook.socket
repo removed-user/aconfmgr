@@ -1,0 +1,15 @@
+[Unit]
+Description=Network Management Resolve Hook Socket
+Documentation=man:systemd-networkd.service(8)
+DefaultDependencies=no
+Before=sockets.target shutdown.target
+Conflicts=shutdown.target
+
+[Socket]
+ListenStream=/run/systemd/resolve.hook/io.systemd.Network
+SocketMode=0666
+Service=systemd-networkd.service
+RemoveOnStop=yes
+
+[Install]
+WantedBy=sockets.target
