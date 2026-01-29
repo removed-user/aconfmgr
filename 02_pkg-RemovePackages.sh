@@ -30,3 +30,34 @@ RemovePackage darkhttpd # A small and secure static webserver
 RemovePackage linux-api-headers # API headers... totally unnecessary (for my needs) additional vulns; always remove if present
 RemovePackage rp-pppoe # Point-to-Point Protocol over Ethernet unneeded
 
+RemovePackage brltty # Braille display driver for Linux/Unix
+RemovePackage clonezilla # ncurses partition and disk imaging/cloning program
+RemovePackage cloud-init # Cloud instance initialization
+RemovePackage ddrescue # GNU data recovery tool
+RemovePackage dhcpcd # DHCP/ IPv4LL/ IPv6RA/ DHCPv6 client
+RemovePackage irssi # Modular text mode IRC client with Perl scripting
+RemovePackage linux-atm # Drivers and tools to support ATM networking under Linux.
+RemovePackage linux-firmware # Firmware files for Linux - Default set
+RemovePackage linux-firmware-marvell # Firmware files for Linux - Firmware for Marvell devices
+RemovePackage micro # Modern and intuitive terminal-based text editor
+RemovePackage mkinitcpio-archiso # Initcpio scripts used by archiso
+RemovePackage mobile-broadband-provider-info # APN configuration presets for mobile broadband connections
+RemovePackage modemmanager # Mobile broadband modem management service
+RemovePackage nbd # tools for network block devices, allowing you to use remote block devices over TCP/IP
+RemovePackage ndisc6 # Collection of IPv6 networking utilities
+RemovePackage opendesktop-fonts # Chinese TrueType Fonts
+RemovePackage orca # Screen reader for individuals who are blind or visually impaired
+RemovePackage partimage # Partition Image saves partitions in many formats to an image file.
+RemovePackage realtime-privileges # Realtime privileges for users
+RemovePackage refind # An EFI boot manager
+RemovePackage spectacle # KDE screenshot capture utility
+RemovePackage spice-vdagent # Spice agent for Linux guests
+RemovePackage tcpdump # Powerful command-line packet analyzer
+RemovePackage testdisk # Checks and undeletes partitions + PhotoRec, signature based recovery tool
+RemovePackage ttf-liberation # Font family which aims at metric compatibility with Arial, Times New Roman, and Courier New
+RemovePackage usb_modeswitch # Activating switchable USB devices on Linux.
+RemovePackage usbmuxd # USB Multiplex Daemon
+RemovePackage vulkan-virtio # Open-source Vulkan driver for Virtio-GPU (Venus)
+RemovePackage xfsprogs # XFS filesystem utilities
+RemovePackage xl2tpd # an open source implementation of the L2TP maintained by Xelerance Corporation
+RemovePackage yad # A fork of zenity - display graphical dialogs from shell scripts or command line

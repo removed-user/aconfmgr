@@ -8,19 +8,12 @@ AddPackage amd-ucode # Microcode update image for AMD CPUs
 AddPackage arch-install-scripts # Scripts to aid in installing Arch Linux
 AddPackage archlinux-keyring # Arch Linux PGP keyring
 AddPackage avahi # Service Discovery for Linux using mDNS/DNS-SD (compatible with Bonjour)
-AddPackage b43-fwcutter # firmware extractor for the b43 kernel module
-AddPackage base # Minimal package set to define a basic Arch Linux installation
-AddPackage base-devel # Basic tools to build Arch Linux packages
+RemovePackage b43-fwcutter # firmware extractor for the b43 kernel module
 AddPackage bind # A complete, highly portable implementation of the DNS protocol
 AddPackage bluedevil # Integrate the Bluetooth technology within KDE workspace and applications
 AddPackage breeze-gtk # Breeze widget theme for GTK 2 and 3
-AddPackage brltty # Braille display driver for Linux/Unix
-AddPackage clonezilla # ncurses partition and disk imaging/cloning program
-AddPackage cloud-init # Cloud instance initialization
 AddPackage cryptsetup # Userspace setup tool for transparent encryption of block devices using dm-crypt
-AddPackage ddrescue # GNU data recovery tool
-AddPackage dhcpcd # DHCP/ IPv4LL/ IPv6RA/ DHCPv6 client
-AddPackage diffutils # Utility programs used for creating patch files
+
 AddPackage dmidecode # Desktop Management Interface table related utilities
 AddPackage dmraid # Device mapper RAID interface
 AddPackage dnsmasq # Lightweight, easy to configure DNS forwarder and DHCP server
@@ -43,7 +36,6 @@ AddPackage hwinfo # Hardware detection tool from openSUSE
 AddPackage imwheel # Mouse wheel configuration tool for XFree86/Xorg
 AddPackage inetutils # A collection of common network programs
 AddPackage inxi # Full featured CLI system information tool
-AddPackage irssi # Modular text mode IRC client with Perl scripting
 AddPackage kate # Advanced text editor
 AddPackage kcalc # Scientific Calculator
 AddPackage kde-gtk-config # Syncs KDE settings to GTK applications
@@ -56,23 +48,14 @@ AddPackage lftp # Sophisticated command line based FTP client
 AddPackage libfido2 # Library functionality for FIDO 2.0, including communication with a device over USB
 AddPackage libusb-compat # Library to enable user space application programs to communicate with USB devices
 AddPackage libwnck3 # Library to manage X windows and workspaces (for e.g. pagers or tasklists)
-AddPackage linux-atm # Drivers and tools to support ATM networking under Linux.
-AddPackage linux-firmware # Firmware files for Linux - Default set
-AddPackage linux-firmware-marvell # Firmware files for Linux - Firmware for Marvell devices
 AddPackage lsb-release # LSB version query program
 AddPackage lsscsi # A tool that lists devices connected via SCSI and its transports
 AddPackage lvm2 # Logical Volume Manager 2 utilities
-AddPackage man-pages # Linux man pages
+
 AddPackage mdadm # A tool for managing/monitoring Linux md device arrays, also known as Software RAID
 AddPackage mesa # Open-source OpenGL drivers
-AddPackage micro # Modern and intuitive terminal-based text editor
 AddPackage mkinitcpio # Modular initramfs image creation utility
-AddPackage mkinitcpio-archiso # Initcpio scripts used by archiso
-AddPackage mobile-broadband-provider-info # APN configuration presets for mobile broadband connections
-AddPackage modemmanager # Mobile broadband modem management service
 AddPackage mtools # A collection of utilities to access MS-DOS disks
-AddPackage nbd # tools for network block devices, allowing you to use remote block devices over TCP/IP
-AddPackage ndisc6 # Collection of IPv6 networking utilities
 AddPackage net-tools # Configuration tools for Linux networking
 AddPackage networkmanager # Network connection manager and user applications
 AddPackage nmap # Utility for network discovery and security auditing
@@ -84,14 +67,11 @@ AddPackage nvidia-utils # NVIDIA drivers utilities
 AddPackage nvme-cli # NVM-Express user space tooling for Linux
 AddPackage occt # OverClock Checking Tool - CPU/GPU stress testing and monitoring
 AddPackage open-iscsi # iSCSI userland tools
-AddPackage opendesktop-fonts # Chinese TrueType Fonts
 AddPackage openssh # SSH protocol implementation for remote login, command execution and file transfer
 AddPackage openvpn # An easy-to-use, robust and highly configurable VPN (Virtual Private Network)
-AddPackage orca # Screen reader for individuals who are blind or visually impaired
 AddPackage os-prober # Utility to detect other OSes on a set of drives
 AddPackage partclone # Utilities to save and restore used blocks on a partition
 AddPackage parted # A program for creating, destroying, resizing, checking and copying partitions
-AddPackage partimage # Partition Image saves partitions in many formats to an image file.
 AddPackage partitionmanager # A KDE utility that allows you to manage disks, partitions, and file systems
 AddPackage pcsclite # PC/SC Architecture smartcard middleware library
 AddPackage pipewire # Low-latency audio/video router and processor
@@ -108,8 +88,6 @@ AddPackage polkit # Application development toolkit for controlling system-wide 
 AddPackage polkit-kde-agent # Daemon providing a polkit authentication UI for KDE
 AddPackage power-profiles-daemon # Makes power profiles handling available over D-Bus
 AddPackage pv # A terminal-based tool for monitoring the progress of data through a pipeline
-AddPackage realtime-privileges # Realtime privileges for users
-AddPackage refind # An EFI boot manager
 AddPackage rtkit # Realtime Policy and Watchdog Daemon
 AddPackage rxvt-unicode-terminfo # Terminfo files for urxvt
 AddPackage sddm # QML based X11 and Wayland display manager
@@ -118,21 +96,13 @@ AddPackage sg3_utils # Generic SCSI utilities
 AddPackage smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
 AddPackage smbclient # Tools to access a server's filespace and printers via SMB
 AddPackage sof-firmware # Sound Open Firmware
-AddPackage spectacle # KDE screenshot capture utility
-AddPackage spice-vdagent # Spice agent for Linux guests
 AddPackage sudo # Give certain users the ability to run some commands as root
 AddPackage syslinux # Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE
 AddPackage systemd-resolvconf # systemd resolvconf replacement (for use with systemd-resolved)
-AddPackage tcpdump # Powerful command-line packet analyzer
-AddPackage testdisk # Checks and undeletes partitions + PhotoRec, signature based recovery tool
 AddPackage traceroute # Tracks the route taken by packets over an IP network
-AddPackage ttf-liberation # Font family which aims at metric compatibility with Arial, Times New Roman, and Courier New
 AddPackage unzip # For extracting and viewing files in .zip archives
-AddPackage usb_modeswitch # Activating switchable USB devices on Linux.
-AddPackage usbmuxd # USB Multiplex Daemon
 AddPackage usbutils # A collection of USB tools to query connected USB devices
 AddPackage vpnc # VPN client for cisco3000 VPN Concentrators
-AddPackage vulkan-virtio # Open-source Vulkan driver for Virtio-GPU (Venus)
 AddPackage wget # Network utility to retrieve files from the web
 AddPackage wireless-regdb # Central Regulatory Domain Database
 AddPackage wireless_tools # Tools allowing to manipulate the Wireless Extensions
@@ -149,14 +119,11 @@ AddPackage xf86-video-amdgpu # X.org amdgpu video driver
 AddPackage xf86-video-fbdev # X.org framebuffer video driver
 AddPackage xf86-video-nouveau # Open Source 3D acceleration driver for nVidia cards
 AddPackage xf86-video-qxl # Xorg X11 qxl video driver
-AddPackage xfsprogs # XFS filesystem utilities
-AddPackage xl2tpd # an open source implementation of the L2TP maintained by Xelerance Corporation
 AddPackage xorg-server # Xorg X server
 AddPackage xorg-xinit # X.Org initialisation program
 AddPackage xorg-xkill # Kill a client by its X resource
 AddPackage xorg-xrandr # Primitive command line interface to RandR extension
 AddPackage xorg-xrdb # X server resource database utility
-AddPackage yad # A fork of zenity - display graphical dialogs from shell scripts or command line
 AddPackage zip # Compressor/archiver for creating and modifying zipfiles
 
 
@@ -187,7 +154,6 @@ AddPackage --foreign xf86-video-vmware # X.org vmware video driver
 
 
 CreateFile /etc/.pwd.lock 600 > /dev/null
-CopyFile /etc/.updated
 CopyFile /etc/NetworkManager/system-connections/Wired_connection_1 600
 CreateDir /etc/aclocal
 CreateDir /etc/audisp
@@ -195,7 +161,6 @@ CreateDir /etc/audit/plugins.d 750
 CreateDir /etc/audit/rules.d
 CreateLink /etc/bashrc /mnt/scripts/setup/files/etc/dirs/singles/works/bashrc
 CopyFile /etc/bashrc.bak
-CopyFile /etc/brlapi.key 640 '' UNKNOWN
 CopyFile /etc/cachyos-release
 CopyFile /etc/calamares/settings.conf
 CopyFile /etc/dbus-1/services/org.kde.kssld6.service
@@ -384,11 +349,6 @@ CreateDir /etc/ssl/conf.d/fin
 CreateDir /etc/ssl/conf.d/notes
 CreateDir /etc/ssl/extracted/cadir
 CreateDir /etc/ssl/trust-source/anchors
-CopyFile /etc/subgid
-CreateFile /etc/subgid- > /dev/null
-CopyFile /etc/subuid
-CreateFile /etc/subuid- > /dev/null
-CreateFile /etc/sysctl.d/1-local.conf > /dev/null
 CopyFile /etc/sysctl.d/99-local.conf
 CopyFile /etc/sysctl.d/hardening.conf
 CopyFile /etc/sysctl.d/network.conf
@@ -539,8 +499,6 @@ CopyFile /usr/share/modules/linux-cachyos-lts-nvidia/nvidia-modeset.ko.zst
 CopyFile /usr/share/modules/linux-cachyos-lts-nvidia/nvidia-peermem.ko.zst
 CopyFile /usr/share/modules/linux-cachyos-lts-nvidia/nvidia-uvm.ko.zst
 CopyFile /usr/share/modules/linux-cachyos-lts-nvidia/nvidia.ko.zst
-CopyFile /usr/share/vim/vimfiles/doc/tags
-CopyFile /var/.updated
 CreateDir /var/lib/tpm2-tss/system/keystore 2775 tss UNKNOWN
 CopyFile /version
 
@@ -552,3 +510,6 @@ SetFileProperty /usr/bin/groupmems group UNKNOWN
 SetFileProperty /usr/bin/groupmems mode 2750
 SetFileProperty /usr/share/xdg-desktop-portal/gtk-portals.conf deleted y
 SetFileProperty /usr/share/xdg-desktop-portal/portals/gtk.portal deleted y
+
+SetFileProperty '/usr/share/vim/vimfiles/doc/tags' deleted y
+SetFileProperty '/etc/brlapi.key' deleted y

@@ -31,3 +31,4 @@ IgnorePath '/etc/systemd/system/multi-user.target.wants/zfs.target'
 IgnorePath '/etc/systemd/system/udisks2.service'
 IgnorePath '/etc/modprobe.d/broadcom-wl.conf'
 IgnorePath '/etc/systemd/system/sound.target.wants/livecd-alsa-unmuter.service'
+SetFileProperty '/usr/share/info/dir' deleted y
