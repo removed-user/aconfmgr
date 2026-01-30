@@ -20,11 +20,16 @@ XferCommand = /usr/bin/curl -L -C - -f -o %o %u
 Architecture = x86_64
 
 # Pacman won't upgrade packages listed in IgnorePkg and members of IgnoreGroup
-IgnorePkg   = 
+IgnorePkg   =  krb5 
 IgnoreGroup =
 
 NoUpgrade   =
 NoExtract   = krb5
+#NoProgressBar
+PrettyProgressBar
+
+
+
 
 # Misc options
 #UseSyslog
@@ -37,6 +42,9 @@ DisableDownloadTimeout
 ParallelDownloads = 10
 DownloadUser = alpm
 #DisableSandbox
+#DisableSandboxFilesystem
+#DisableSandboxSyscalls
+
 
 # By default, pacman accepts packages signed by keys that its local keyring
 # trusts (see pacman-key and its man page), as well as unsigned packages.
