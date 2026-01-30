@@ -95,3 +95,4 @@ RemovePackage xorg-xrandr # Primitive command line interface to RandR extension
 RemovePackage cifs-utils # Unnecessary
 RemovePackage ppp # Unnecessary
 RemovePackage thin-provisioning-tools # Unnecessary
+RemovePackage fuse2

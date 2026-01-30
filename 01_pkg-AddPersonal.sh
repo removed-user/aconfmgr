@@ -25,3 +25,9 @@ AddPackage gptfdisk # A text-mode partitioning tool that works on GUID Partition
 AddPackage linux-cachyos-lts-zfs # zfs module for the Linux BORE + Cachy Sauce Kernel by CachyOS with other patches and improvements - Long Term Service kernel
 AddPackage expect # A tool for automating interactive applications
 AddPackage sysfsutils # System Utilities Based on Sysfs
+
+AddPackage terminus-font
+AddPackage inux-cachyos-hardened-zfs
+AddPackage inux-cachyos-lts-zfs
+AddPackage kinitcpio-sd-zfs
+AddPackage fs-utils
