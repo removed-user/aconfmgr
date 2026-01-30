@@ -80,3 +80,18 @@ RemovePackage xf86-video-amdgpu # X.org amdgpu video driver
 RemovePackage xf86-video-fbdev # X.org framebuffer video driver
 RemovePackage xf86-video-nouveau # Open Source 3D acceleration driver for nVidia cards
 RemovePackage xf86-video-qxl # Xorg X11 qxl video driver
+RemovePackage bluedevil # Integrate the Bluetooth technology within KDE workspace and applications
+RemovePackage pipewire-pulse # Low-latency audio/video router and processor - PulseAudio replacement
+RemovePackage pcsclite # PC/SC Architecture smartcard middleware library
+RemovePackage konsole # KDE terminal emulator
+RemovePackage dolphin # KDE File Manager
+RemovePackage smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
+RemovePackage kscreen # KDE screen management software
+RemovePackage kate # Advanced text editor
+RemovePackage kcalc # Scientific Calculator
+RemovePackage plasma-pa # Plasma applet for audio volume management using PulseAudio
+RemovePackage kde-gtk-config # Syncs KDE settings to GTK applications
+RemovePackage xorg-xrandr # Primitive command line interface to RandR extension
+RemovePackage cifs-utils # Unnecessary
+RemovePackage ppp # Unnecessary
+RemovePackage thin-provisioning-tools # Unnecessary

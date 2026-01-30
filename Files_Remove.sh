@@ -41,3 +41,4 @@ SetFileProperty '/etc/pam.d/rsh' deleted y
 SetFileProperty '/usr/share/xdg-desktop-portal/gtk-portals.conf' deleted y
 SetFileProperty '/usr/share/xdg-desktop-portal/portals/gtk.portal' deleted y
 SetFileProperty '/etc/brlapi.key' deleted y
+SetFileProperty '/etc/iscsi/initiatorname.iscsi' deleted y

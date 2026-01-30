@@ -19,4 +19,5 @@ IgnorePath '/var/log/*'
 IgnorePath '/usr/share/icons/*'
 IgnorePath '/var/lib/upower/*'
 IgnorePath '/usr/share/modules/*'
-
+IgnorePath '/usr/share/modules/linux-cachyos-lts-nvidia/*'
+IgnorePath '/etc/ld.so.cache'
