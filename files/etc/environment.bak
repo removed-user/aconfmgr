@@ -14,3 +14,6 @@ EDITOR=vim
 PAGER=bat
 SAVED=/mnt/scripts/setup/files/
 PKG_CONFIG_PATH=/etc/pkg-config
+
+SDL_VIDEODRIVER=wayland
+ELECTRON_OZONE_PLATFORM_HINT=wayland
