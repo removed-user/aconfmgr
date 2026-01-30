@@ -61,3 +61,22 @@ RemovePackage vulkan-virtio # Open-source Vulkan driver for Virtio-GPU (Venus)
 RemovePackage xfsprogs # XFS filesystem utilities
 RemovePackage xl2tpd # an open source implementation of the L2TP maintained by Xelerance Corporation
 RemovePackage yad # A fork of zenity - display graphical dialogs from shell scripts or command line
+RemovePackage systemd-sysvcompat # Unnecessary sysv compatibility?
+RemovePackage wpa_supplicant # No Wireless devices in pc
+RemovePackage inetutils # A collection of common network programs
+RemovePackage lftp # Sophisticated command line based FTP client
+RemovePackage rtkit # Realtime Policy and Watchdog Daemon
+RemovePackage smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
+RemovePackage sof-firmware # Sound Open Firmware
+RemovePackage wireless-regdb # Central Regulatory Domain Database
+RemovePackage wireless_tools # Tools allowing to manipulate the Wireless Extensions
+RemovePackage xf86-input-elographics # X.org Elographics TouchScreen input driver
+RemovePackage xf86-input-vmmouse # X.org VMWare Mouse input driver
+RemovePackage xf86-input-evdev # X.org evdev input driver
+RemovePackage xf86-input-libinput # Generic input driver for the X.Org server based on libinput
+RemovePackage xf86-input-synaptics # Synaptics driver for notebook touchpads
+RemovePackage xf86-input-void # X.org void input driver
+RemovePackage xf86-video-amdgpu # X.org amdgpu video driver
+RemovePackage xf86-video-fbdev # X.org framebuffer video driver
+RemovePackage xf86-video-nouveau # Open Source 3D acceleration driver for nVidia cards
+RemovePackage xf86-video-qxl # Xorg X11 qxl video driver

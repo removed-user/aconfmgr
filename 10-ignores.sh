@@ -18,5 +18,5 @@ IgnorePath '/var/tmp/*'
 IgnorePath '/var/log/*'
 IgnorePath '/usr/share/icons/*'
 IgnorePath '/var/lib/upower/*'
-
+IgnorePath '/usr/share/modules/*'
 

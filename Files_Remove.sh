@@ -38,3 +38,6 @@ SetFileProperty '/etc/pam.d/partimaged' deleted y
 SetFileProperty '/etc/pam.d/remote' deleted y
 SetFileProperty '/etc/pam.d/rlogin' deleted y
 SetFileProperty '/etc/pam.d/rsh' deleted y
+SetFileProperty '/usr/share/xdg-desktop-portal/gtk-portals.conf' deleted y
+SetFileProperty '/usr/share/xdg-desktop-portal/portals/gtk.portal' deleted y
+SetFileProperty '/etc/brlapi.key' deleted y

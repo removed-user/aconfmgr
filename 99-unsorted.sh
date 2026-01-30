@@ -4,7 +4,6 @@
 
 
 AddPackage alsa-utils # Advanced Linux Sound Architecture - Utilities
-AddPackage amd-ucode # Microcode update image for AMD CPUs
 AddPackage arch-install-scripts # Scripts to aid in installing Arch Linux
 AddPackage archlinux-keyring # Arch Linux PGP keyring
 AddPackage avahi # Service Discovery for Linux using mDNS/DNS-SD (compatible with Bonjour)
@@ -14,7 +13,6 @@ AddPackage bluedevil # Integrate the Bluetooth technology within KDE workspace a
 AddPackage breeze-gtk # Breeze widget theme for GTK 2 and 3
 AddPackage cryptsetup # Userspace setup tool for transparent encryption of block devices using dm-crypt
 
-AddPackage dmidecode # Desktop Management Interface table related utilities
 AddPackage dmraid # Device mapper RAID interface
 AddPackage dnsmasq # Lightweight, easy to configure DNS forwarder and DHCP server
 AddPackage dolphin # KDE File Manager
@@ -31,10 +29,7 @@ AddPackage gpart # Partition table rescue/guessing tool
 AddPackage gparted # A Partition Magic clone, frontend to GNU Parted
 AddPackage gptfdisk # A text-mode partitioning tool that works on GUID Partition Table (GPT) disks
 AddPackage haveged # Entropy harvesting daemon using CPU timings
-AddPackage hwdetect # Hardware detection script with loading modules and mkinitcpio.conf
-AddPackage hwinfo # Hardware detection tool from openSUSE
 AddPackage imwheel # Mouse wheel configuration tool for XFree86/Xorg
-AddPackage inetutils # A collection of common network programs
 AddPackage inxi # Full featured CLI system information tool
 AddPackage kate # Advanced text editor
 AddPackage kcalc # Scientific Calculator
@@ -43,8 +38,6 @@ AddPackage kinfocenter # A utility that provides information about a computer sy
 AddPackage konsole # KDE terminal emulator
 AddPackage kscreen # KDE screen management software
 AddPackage ldns # Fast DNS library supporting recent RFCs
-AddPackage less # A terminal based program for viewing text files
-AddPackage lftp # Sophisticated command line based FTP client
 AddPackage libfido2 # Library functionality for FIDO 2.0, including communication with a device over USB
 AddPackage libusb-compat # Library to enable user space application programs to communicate with USB devices
 AddPackage libwnck3 # Library to manage X windows and workspaces (for e.g. pagers or tasklists)
@@ -104,21 +97,8 @@ AddPackage unzip # For extracting and viewing files in .zip archives
 AddPackage usbutils # A collection of USB tools to query connected USB devices
 AddPackage vpnc # VPN client for cisco3000 VPN Concentrators
 AddPackage wget # Network utility to retrieve files from the web
-AddPackage wireless-regdb # Central Regulatory Domain Database
-AddPackage wireless_tools # Tools allowing to manipulate the Wireless Extensions
-AddPackage wireplumber # Session / policy manager implementation for PipeWire
 AddPackage xdg-user-dirs-gtk # Creates user dirs and asks to relocalize them
 AddPackage xdg-utils # Command line tools that assist applications with a variety of desktop integration tasks
-AddPackage xf86-input-elographics # X.org Elographics TouchScreen input driver
-AddPackage xf86-input-evdev # X.org evdev input driver
-AddPackage xf86-input-libinput # Generic input driver for the X.Org server based on libinput
-AddPackage xf86-input-synaptics # Synaptics driver for notebook touchpads
-AddPackage xf86-input-vmmouse # X.org VMWare Mouse input driver
-AddPackage xf86-input-void # X.org void input driver
-AddPackage xf86-video-amdgpu # X.org amdgpu video driver
-AddPackage xf86-video-fbdev # X.org framebuffer video driver
-AddPackage xf86-video-nouveau # Open Source 3D acceleration driver for nVidia cards
-AddPackage xf86-video-qxl # Xorg X11 qxl video driver
 AddPackage xorg-server # Xorg X server
 AddPackage xorg-xinit # X.Org initialisation program
 AddPackage xorg-xkill # Kill a client by its X resource
@@ -508,8 +488,8 @@ CopyFile /version
 
 SetFileProperty /usr/bin/groupmems group UNKNOWN
 SetFileProperty /usr/bin/groupmems mode 2750
-SetFileProperty /usr/share/xdg-desktop-portal/gtk-portals.conf deleted y
-SetFileProperty /usr/share/xdg-desktop-portal/portals/gtk.portal deleted y
 
-SetFileProperty '/usr/share/vim/vimfiles/doc/tags' deleted y
+CreateFile '/usr/share/vim/vimfiles/doc/tags' > /dev/null
+
 SetFileProperty '/etc/brlapi.key' deleted y
+CopyFile /var/lib/cachyos-installer/net-profiles.toml
