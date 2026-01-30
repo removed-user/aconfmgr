@@ -1,0 +1,37 @@
+## /usr/lib/systemd/system/systemd-homed.service
+ #  SPDX-License-Identifier: LGPL-2.1-or-later
+ #
+ #  This file is part of systemd.
+ #
+ #  systemd is free software; you can redistribute it and/or modify it
+ #  under the terms of the GNU Lesser General Public License as published by
+ #  the Free Software Foundation; either version 2.1 of the License, or
+ #  (at your option) any later version.
+ 
+ [Unit]
+ Description=Home Area Manager
+ Documentation=man:systemd-homed.service(8)
+ Documentation=man:org.freedesktop.home1(5)
+ After=home.mount dbus-broker.service
+ 
+ [Service]
+ DynamicUser=yes
+ CapabilityBoundingSet=CAP_SYS_RESOURCE 
+ ExecStart=/usr/lib/systemd/systemd-homed
+ KillMode=mixed
+ LimitNOFILE=524288
+ LockPersonality=yes
+ MemoryDenyWriteExecute=yes
+ NoNewPrivileges=yes
+ RestrictAddressFamilies=AF_UNIX 
+ RestrictNamespaces=mnt user
+ RestrictRealtime=yes
+ StateDirectory=/run/systemd/home
+ SystemCallArchitectures=native
+ SystemCallErrorNumber=EPERM
+ SystemCallFilter=@system-service @mount
+ TimeoutStopSec=3min
+ WatchdogSec=3min
+ Type=oneshot 
+ [Install]
+ Also=systemd-homed-activate.service

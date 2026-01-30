@@ -1,0 +1,21 @@
+## /usr/lib/systemd/system/dbus-broker.service
+ [Unit]
+ 
+ Description=D-Bus-Broker System Message Bus
+ Documentation=man:dbus-broker-launch(1)
+ DefaultDependencies=false
+ After=dbus-broker.socket
+ Before=basic.target shutdown.target
+ Requires=dbus-broker.socket
+ Conflicts=shutdown.target
+ 
+ [Service]
+ DynamicUser=yes
+ Type=oneshot
+ Sockets=dbus-broker.socket
+ OOMScoreAdjust=-900
+ LimitNOFILE=16384
+ ProtectSystem=full
+ PrivateTmp=true
+ PrivateDevices=true
+ ExecStart=/usr/bin/dbus-broker-launch --scope system

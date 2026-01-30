@@ -1,0 +1,16 @@
+BASH_LOADABLES_PATH=/lib/bash:/etc/bashrc:/etc/profile:/etc/environment
+BASHOPTS=checkwinsize:cmdhist:complete_fullquote:expand_aliases:extquote:globasciiranges:globskipdots:hostcomplete:progcomp:promptvars:sourcepath
+SHELLOPTS=braceexpand:emacs:hashall:histexpand:history
+
+ZPOOL_VDEV_NAME_PATH=1
+SUDO_GID=0
+SUDO_UID=0
+LOGNAME=
+SUDO_USER=
+SUDO_HOME=
+LANG=en_US
+HOME=
+EDITOR=vim
+PAGER=bat
+SAVED=/mnt/scripts/setup/files/
+PKG_CONFIG_PATH=/etc/pkg-config

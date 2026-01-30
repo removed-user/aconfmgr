@@ -1,0 +1,2 @@
+install -o root -g root -m 00700 -t /lib/aconfmgr/ files/usr/lib/aconfmgr/*
+install -o root -g root -m 00700 -t /bin files/usr/bin/aconfmgr

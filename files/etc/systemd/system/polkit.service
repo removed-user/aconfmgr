@@ -1,0 +1,34 @@
+## /etc/systemd/system/polkit.service
+ ## /usr/lib/systemd/system/polkit.service
+  [Unit]
+  Description=Authorization Manager
+  Documentation=man:polkit(8)
+  
+  [Service]
+DynamicUser=yes
+  CapabilityBoundingSet=CAP_SETUID CAP_SETGID
+  ExecStart=/usr/lib/polkit-1/polkitd --no-debug --log-level=notice
+  User=polkitd
+  LimitMEMLOCK=0
+  LockPersonality=yes
+  MemoryDenyWriteExecute=yes
+  ProtectKernelModules=yes
+  ProtectKernelLogs=yes
+  ProtectKernelTunables=yes
+  ProtectSystem=strict
+  ProtectClock=yes
+  ProtectHostname=yes
+  RemoveIPC=yes
+  RestrictAddressFamilies=AF_UNIX
+  RestrictNamespaces=yes
+  RestrictRealtime=yes
+  RestrictSUIDSGID=yes
+  SystemCallArchitectures=native
+  SystemCallFilter=@system-service
+  UMask=0077
+  
+  # Mitigate memory leaks
+  MemoryMax=32M
+  MemorySwapMax=32M
+  OOMPolicy=stop
+  Restart=on-failure

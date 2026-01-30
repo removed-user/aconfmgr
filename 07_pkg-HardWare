@@ -1,0 +1,4 @@
+AddPackage dmidecode # Desktop Management Interface table related utilities
+AddPackage amd-ucode # Microcode update image for AMD CPUs
+AddPackage hwdetect # Hardware detection script with loading modules and mkinitcpio.conf
+AddPackage hwinfo # Hardware detection tool from openSUSE

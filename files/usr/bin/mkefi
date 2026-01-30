@@ -1,0 +1,1 @@
+mkfs.fat -F 32 --codepage=437 -n "EFI" $1

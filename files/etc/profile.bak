@@ -1,0 +1,28 @@
+
+declare -ag BASH_LOADABLES_PATH=/lib/bash:/etc/bashrc:/etc/profile
+declare -ag BASHOPTS=checkwinsize:cmdhist:complete_fullquote:expand_aliases:extquote:globasciiranges:globskipdots:hostcomplete:progcomp:promptvars:sourcepath
+declare -ag SHELLOPTS=braceexpand:emacs:hashall:histexpand:history
+# /etc/profile
+mesg -n
+
+shopt -u force_fignore
+shopt -u interactive_comments
+
+# Force PATH to be environment
+export PATH
+
+
+# Unload our profile API functions
+
+declare -ag SUDO_GID=0
+declare -ag SUDO_UID=0
+declare -ag LOGNAME=""
+declare -ag SUDO_USER="root"
+declare -ag SUDO_HOME=""
+declare -ag LANG="en_US"
+declare -ag HOME=""
+declare -ag PAGER=bat
+declare -ag EDITOR=vim
+
+#export ENVIRONMENT
+export PKG_CONFIG_PATH=/etc/pkg-config

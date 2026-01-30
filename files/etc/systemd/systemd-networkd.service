@@ -1,0 +1,55 @@
+#  SPDX-License-Identifier: LGPL-2.1-or-later
+#
+#  This file is part of systemd.
+#
+#  systemd is free software; you can redistribute it and/or modify it
+#  under the terms of the GNU Lesser General Public License as published by
+#  the Free Software Foundation; either version 2.1 of the License, or
+#  (at your option) any later version.
+
+[Unit]
+Description=Network Management
+Documentation=man:systemd-networkd.service(8)
+Documentation=man:org.freedesktop.network1(5)
+DefaultDependencies=yes
+# systemd-udevd.service can be dropped once tuntap is moved to netlink
+After=systemd-udevd.service network-pre.target systemd-sysusers.service systemd-sysctl.service
+Before=network.target multi-user.target shutdown.target initrd-switch-root.target
+Conflicts=shutdown.target initrd-switch-root.target
+Wants=network.target
+
+[Service]
+User=systemd-network
+DynamicUser=yes
+SystemdService=systemd-networkd.service
+ExecStart=/usr/lib/systemd/systemd-networkd
+FileDescriptorStoreMax=512
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+ProtectClock=yes
+ProtectHome=yes
+ProtectKernelLogs=yes
+ProtectSystem=strict
+Restart=on-failure
+RestartKillSignal=SIGUSR2
+RestartSec=0
+RestrictAddressFamilies=AF_UNIX  AF_INET AF_INET6 
+RestrictSUIDSGID=yes
+RuntimeDirectory=/run/systemd/netif
+RuntimeDirectoryPreserve=yes
+Sockets=systemd-networkd.socket systemd-networkd-varlink.socket systemd-networkd-resolve-hook.socket
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service bpf
+Type=notify-reload
+User=systemd-network
+WatchdogSec=3min
+
+[Install]
+WantedBy=networking.target
+Also=systemd-networkd.socket systemd-networkd-varlink.socket systemd-networkd-resolve-hook.socket
+
+# The output from this generator is used by udevd and networkd. Enable it by
+# default when enabling systemd-networkd.service.
+Also=systemd-network-generator.service

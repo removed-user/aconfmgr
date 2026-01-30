@@ -1,0 +1,59 @@
+## /usr/lib/systemd/system/systemd-logind.service
+ #  SPDX-License-Identifier: LGPL-2.1-or-later
+ #
+ #  This file is part of systemd.
+ #
+ #  systemd is free software; you can redistribute it and/or modify it
+ #  under the terms of the GNU Lesser General Public License as published by
+ #  the Free Software Foundation; either version 2.1 of the License, or
+ #  (at your option) any later version.
+ 
+ [Unit]
+ Description=User Login Management
+ Documentation=man:systemd-logind.service(8)
+ Documentation=man:logind.conf(5)
+ 
+ After=nss-user-lookup.target
+ 
+ # Ask for the dbus socket.
+ Wants=dbus-broker.socket
+ After=dbus-broker.socket
+ 
+ [Service]
+ DynamicUser=yes
+ CapabilityBoundingSet=CAP_SYS_TTY_CONFIG
+ DeviceAllow=block-* ro
+ DeviceAllow=char-/dev/console ro
+ DeviceAllow=char-hidraw ro
+ DeviceAllow=char-input ro
+ DeviceAllow=char-tty ro
+ ExecStart=/usr/lib/systemd/systemd-logind
+ FileDescriptorStoreMax=768
+ IPAddressDeny=any
+ LockPersonality=yes
+ MemoryDenyWriteExecute=yes
+ NoNewPrivileges=yes
+ # We don't use ProtectProc= since we need to look for usernames and tty for wall messages
+ ProtectClock=yes
+ ProtectControlGroups=yes
+ ProtectHome=yes
+ ProtectHostname=yes
+ ProtectKernelLogs=yes
+ ProtectKernelModules=yes
+ ProtectSystem=strict
+ Restart=always
+ RestartSec=0
+ RestrictAddressFamilies=AF_UNIX
+ RestrictNamespaces=yes
+ RestrictRealtime=yes
+ RestrictSUIDSGID=yes
+ StateDirectory=/run/systemd/linger
+ SystemCallArchitectures=native
+ SystemCallErrorNumber=EPERM
+ SystemCallFilter=@system-service
+ Type=oneshot
+ WatchdogSec=3min
+ 
+ # Increase the default a bit in order to allow many simultaneous logins since
+ # we keep one fd open per session.
+ LimitNOFILE=524288

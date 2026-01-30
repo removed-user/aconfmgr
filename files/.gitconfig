@@ -1,0 +1,20 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	email = caseyriley94@gmail.com
+[alias]
+	kermit = commit --allow-empty-message -m ''
+[commit]
+	template = /root/.gitmessage
+[core]
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	side-by-side = true
+[merge]
+    conflictStyle = zdiff3

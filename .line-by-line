@@ -1,0 +1,6 @@
+while IFS= read -r line1 <&3 && IFS= read -r line2 <&4; do
+    echo "File 1: $line1 | File 2: $line2"
+done 3<file1.txt 4<file2.txt
+exec 3<&-
+exec 4<&-
+
