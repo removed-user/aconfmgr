@@ -32,3 +32,9 @@ IgnorePath '/etc/systemd/system/udisks2.service'
 IgnorePath '/etc/modprobe.d/broadcom-wl.conf'
 IgnorePath '/etc/systemd/system/sound.target.wants/livecd-alsa-unmuter.service'
 SetFileProperty '/usr/share/info/dir' deleted y
+
+SetFileProperty '/etc/pam.d/system-remote-login' deleted y
+SetFileProperty '/etc/pam.d/partimaged' deleted y
+SetFileProperty '/etc/pam.d/remote' deleted y
+SetFileProperty '/etc/pam.d/rlogin' deleted y
+SetFileProperty '/etc/pam.d/rsh' deleted y
