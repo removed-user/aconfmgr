@@ -27,7 +27,10 @@ AddPackage expect # A tool for automating interactive applications
 AddPackage sysfsutils # System Utilities Based on Sysfs
 
 AddPackage terminus-font
-AddPackage inux-cachyos-hardened-zfs
-AddPackage inux-cachyos-lts-zfs
-AddPackage kinitcpio-sd-zfs
-AddPackage fs-utils
+AddPackage linux-cachyos-hardened-zfs
+AddPackage linux-cachyos-lts-zfs
+AddPackage mkinitcpio-sd-zfs
+AddPackage zfs-utils
+AddPackage cachyos-rate-mirrors
+
+AddPackage --foreign aconfmgr-git # A configuration manager for Arch Linux

@@ -96,3 +96,4 @@ RemovePackage cifs-utils # Unnecessary
 RemovePackage ppp # Unnecessary
 RemovePackage thin-provisioning-tools # Unnecessary
 RemovePackage fuse2
+RemovePackage cifs-utils

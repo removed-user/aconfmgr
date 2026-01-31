@@ -31,14 +31,14 @@ IgnorePath '/etc/systemd/system/multi-user.target.wants/zfs.target'
 IgnorePath '/etc/systemd/system/udisks2.service'
 IgnorePath '/etc/modprobe.d/broadcom-wl.conf'
 IgnorePath '/etc/systemd/system/sound.target.wants/livecd-alsa-unmuter.service'
-SetFileProperty '/usr/share/info/dir' deleted y
-
-SetFileProperty '/etc/pam.d/system-remote-login' deleted y
-SetFileProperty '/etc/pam.d/partimaged' deleted y
-SetFileProperty '/etc/pam.d/remote' deleted y
-SetFileProperty '/etc/pam.d/rlogin' deleted y
-SetFileProperty '/etc/pam.d/rsh' deleted y
-SetFileProperty '/usr/share/xdg-desktop-portal/gtk-portals.conf' deleted y
-SetFileProperty '/usr/share/xdg-desktop-portal/portals/gtk.portal' deleted y
-SetFileProperty '/etc/brlapi.key' deleted y
-SetFileProperty '/etc/iscsi/initiatorname.iscsi' deleted y
+#SetFileProperty '/usr/share/info/dir' deleted y
+#
+#SetFileProperty '/etc/pam.d/system-remote-login' deleted y
+#SetFileProperty '/etc/pam.d/partimaged' deleted y
+#SetFileProperty '/etc/pam.d/remote' deleted y
+#SetFileProperty '/etc/pam.d/rlogin' deleted y
+#SetFileProperty '/etc/pam.d/rsh' deleted y
+#SetFileProperty '/usr/share/xdg-desktop-portal/gtk-portals.conf' deleted y
+#SetFileProperty '/usr/share/xdg-desktop-portal/portals/gtk.portal' deleted y
+#SetFileProperty '/etc/brlapi.key' deleted y
+#SetFileProperty '/etc/iscsi/initiatorname.iscsi' deleted y
