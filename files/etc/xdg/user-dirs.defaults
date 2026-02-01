@@ -1,7 +1,32 @@
+
+
+
+
+
+
+
+
 # Default settings for user directories
 #
 # The values are relative pathnames from the home directory and
 # will be translated on a per-path-element basis into the users locale
+
+#XDG_DATA_HOME defaults to $HOME/.local/share.
+#XDG_CONFIG_HOME defaults to $HOME/.config.
+#XDG_STATE_HOME defaults to $HOME/.local/state.
+#XDG_CACHE_HOME defaults to $HOME/.cache.
+#XDG_DATA_DIRS defaults to /usr/local/share/:/usr/share/.
+#XDG_CONFIG_DIRS defaults to /etc/xdg.
+#XDG_RUNTIME_DIR has no default in the specification, but applications should handle it if unset; it's often set by pam_systemd to /run/user/$UID
+
+
+
+
+
+
+
+
+
 DESKTOP=Desktop
 DOWNLOAD=Downloads
 TEMPLATES=Templates
