@@ -1,0 +1,557 @@
+Description     : Collection of C++ library code designed to augment the C++ standard library
+Description     : D-Bus interface for user account query and manipulation
+Description     : Access control list utilities, libraries and headers
+Description     : A cross-platform, GPU-accelerated terminal emulator
+Description     : Low-latency audio/video router and processor - ALSA card profiles
+Description     : An alternative implementation of Linux sound support
+Description     : ALSA topology configuration files
+Description     : ALSA Use Case Manager configuration (and topologies)
+Description     : Alliance for Open Media video codec
+Description     : Provides a standard for creating app stores across distributions
+Description     : Qt6 interface for AppStream
+Description     : Arch Linux PGP keyring
+Description     : Qt library that implements the Open Collaboration Services API
+Description     : Extended attribute support library for ACL support
+Description     : Userspace components of the audit framework
+Description     : A themeable window decoration for KWin
+Description     : Service Discovery for Linux using mDNS/DNS-SD (compatible with Bonjour)
+Description     : Minimal package set to define a basic Arch Linux installation
+Description     : The GNU Bourne Again shell
+Description     : Programmable completion for the bash shell
+Description     : Cat clone with syntax highlighting and git integration
+Description     : A set of programs to assemble and manipulate binary and object files
+Description     : Deprecated libraries for the bluetooth protocol stack
+Description     : Artwork, styles and assets for the Breeze visual style for the Plasma Desktop
+Description     : Breeze icon theme
+Description     : Generic-purpose lossless compression algorithm
+Description     : Unprivileged sandboxing tool
+Description     : A high-quality data compression program
+Description     : Common CA certificates - default providers
+Description     : Mozilla's set of trusted CA certificates
+Description     : Common CA certificates (utilities)
+Description     : CachyOS libalpm hooks
+Description     : CachyOS keyring
+Description     : CachyOS repository mirrorlist
+Description     : CachyOS - Rate mirrors service
+Description     : CachyOS repository mirrorlist
+Description     : CachyOS repository mirrorlist
+Description     : 2D graphics library with support for multiple output devices
+Description     : CIFS filesystem user-space tools
+Description     : The basic file, shell and text manipulation utilities of the GNU operating system
+Description     : Userspace setup tool for transparent encryption of block devices using dm-crypt
+Description     : command line tool and library for transferring data with URLs
+Description     : AV1 cross-platform decoder focused on speed and correctness
+Description     : The Berkeley DB embedded database system v5.3
+Description     : Freedesktop.org message bus system
+Description     : Linux D-Bus Message Broker
+Description     : Linux D-Bus Message Broker - Service units
+Description     : D-Bus service units (default provider)
+Description     : Default cursor set
+Description     : Device mapper userspace library and tools
+Description     : Utility programs used for creating patch files
+Description     : Binary-decimal and decimal-binary routines for IEEE doubles
+Description     : Embeddable Javascript engine
+Description     : Ext2/3/4 filesystem utilities
+Description     : EditorConfig core code written in C (for use by plugins supporting EditorConfig parsing)
+Description     : The GBM EGL external platform library
+Description     : EGLStream-based Wayland external platform
+Description     : EGLStream-based Wayland external platform (2)
+Description     : NVIDIA XLib and XCB EGL Platform Library
+Description     : EGL External Platform interface
+Description     : Exif, Iptc and XMP metadata manipulation library and tools
+Description     : An XML parser library
+Description     : A tool for automating interactive applications
+Description     : A modern replacement for ls (community fork of exa)
+Description     : Simple, fast and user-friendly alternative to find
+Description     : Complete solution to record, convert and stream audio and video
+Description     : A library for computing the discrete Fourier transform (DFT)
+Description     : File type identification utility
+Description     : Base Arch Linux files
+Description     : GNU utilities to locate files
+Description     : Free Lossless Audio Codec
+Description     : Library for configuring and customizing font access
+Description     : Framework providing components to allow applications to integrate with a KDE Workspace
+Description     : Font rasterization library
+Description     : A Free Implementation of the Unicode Bidirectional Algorithm
+Description     : Common files for fuse2/3 packages
+Description     : Interface for userspace programs to export a filesystem to the Linux kernel
+Description     : Command-line fuzzy finder
+Description     : GNU version of awk
+Description     : Runtime libraries shipped by GCC
+Description     : GNU database library
+Description     : An image loading library
+Description     : GNU internationalization library
+Description     : Library for reading and writing gif images
+Description     : the fast distributed version control system
+Description     : The GitHub CLI
+Description     : Low level core library
+Description     : GNU C Library
+Description     : OpenGL and OpenGL ES shader front end and validator
+Description     : Sandboxed and extendable image decoding
+Description     : A free library for arbitrary precision arithmetic
+Description     : The Gnulib localizations
+Description     : Complete and free implementation of the OpenPGP standard
+Description     : A library which provides a secure layer over a reliable transport layer
+Description     : Fast, multi-threaded malloc and nifty performance analysis tools
+Description     : C wrapper library for GnuPG
+Description     : C++ bindings for GPGME
+Description     : A mouse server for the console and xterm
+Description     : A text-mode partitioning tool that works on GUID Partition Table (GPT) disks
+Description     : Thin layer of graphic data types
+Description     : a "smart font" system to handle the complexities of lesser-known languages of the world
+Description     : A string search utility
+Description     : Shared libraries for GSM 06.10 lossy speech compression
+Description     : Multimedia graph framework - base
+Description     : Multimedia graph framework - core
+Description     : Google Test - C++ testing utility
+Description     : GNU compression utility
+Description     : OpenType text shaping engine
+Description     : Freedesktop.org Hicolor icon theme
+Description     : Simple library for communicating with USB and Bluetooth HID devices
+Description     : A C++ library that provides portable SIMD/vector intrinsics
+Description     : Spell checker and morphological analyzer library and program
+Description     : hardware identification databases
+Description     : /etc/protocols and /etc/services provided by IANA
+Description     : International Components for Unicode library
+Description     : IP Routing Utilities
+Description     : Linux kernel packet control tool (using legacy interface)
+Description     : Network monitoring tools, including ping
+Description     : Lists of the country, language, and currency names
+Description     : C library for encoding, decoding and manipulating JSON data
+Description     : Data compression library/utilities for bi-level high-resolution images
+Description     : JSON implementation in C
+Description     : JSON library built on GLib
+Description     : System service to manage user activities and track the usage patterns
+Description     : Qt addon providing access to numerous types of archives
+Description     : Abstraction to system policy and authentication features
+Description     : Keytable files and keyboard utilities
+Description     : Support for bookmarks and the XBEL format
+Description     : Utilities for interacting with KCModules
+Description     : Provide a collection of methods to manipulate strings using various encodings
+Description     : Classes to read and interact with KColorScheme
+Description     : Text completion helpers and widgets
+Description     : Configuration system
+Description     : Widgets for KConfig
+Description     : Addons to QtCore
+Description     : Support for application crash analysis and bug report from apps
+Description     : Addons to QtDBus
+Description     : Tools based on KDE Frameworks to better interact with the system
+Description     : Provides integration of QML and KDE Frameworks
+Description     : Plugin based library to create window decorations
+Description     : Extensible deamon for providing system level services
+Description     : Integration with su for elevated privileges
+Description     : Abstraction to system DNSSD features
+Description     : Qt-based client-side and server-side SOAP component
+Description     : WS-Discovery client library based on KDSoap
+Description     : Linux Key Management Utilities
+Description     : Add support for global workspace shortcuts
+Description     : Daemon providing Global Keyboard Shortcut (Accelerator) functionality
+Description     : Addons to QtGui
+Description     : KDE library for regional holiday information
+Description     : Advanced internationalization framework
+Description     : Support for icon themes
+Description     : Monitoring user activity
+Description     : Resource and network access abstraction
+Description     : Additional components to increase the functionality of KIO
+Description     : FUSE interface for KIO
+Description     : A QtQuick based components set
+Description     : Add-ons for the Kirigami framework
+Description     : Models for Qt Model/View system
+Description     : Widget addons for Qt Model/View
+Description     : Widgets for tracking KJob instances
+Description     : Linux kernel module management tools and library
+Description     : Support for downloading application assets from the network
+Description     : Helpers for scheduling the dark-light cycle
+Description     : Abstraction for system notifications
+Description     : Configuration system for KNotify
+Description     : Framework that lets applications manage user installable packages of non-binary assets
+Description     : Document centric plugin system
+Description     : Components relating to pipewire use in Plasma
+Description     : Pty abstraction
+Description     : A QtQuick plugin providing high-performance charts
+Description     : The Kerberos network authentication system
+Description     : Framework for providing different actions given a string query
+Description     : Library and components for secure lock screen architecture
+Description     : Advanced plugin and service introspection
+Description     : Implementation of Status Notifier Items
+Description     : Components for handling SVGs
+Description     : A plugin based system monitoring daemon
+Description     : Advanced embeddable text editor
+Description     : Advanced text editing widgets
+Description     : Support for unit conversion
+Description     : Framework for collecting user feedback for applications via telemetry and surveys
+Description     : Secure and unified container for user passwords
+Description     : Qt-style Client and Server library wrapper for the Wayland libraries
+Description     : Addons to QtWidgets
+Description     : An easy to use, but flexible, Wayland compositor
+Description     : Access to the windowing system
+Description     : User configurable main windows
+Description     : MP4 muxer and other tools
+Description     : A high quality MPEG Audio Layer III (MP3) encoder
+Description     : Qt component to allow applications to make use of the Wayland wl-layer-shell protocol
+Description     : Small-footprint color management engine, version 2
+Description     : Schema-less, ldap like, API and database
+Description     : Lean cryptographic library usable for bare-metal environments
+Description     : A terminal based program for viewing text files
+Description     : Multi-format archive and compression library
+Description     : A portable library for SSA/ASS subtitles rendering
+Description     : IPC library used by some GnuPG related software
+Description     : A C library for executing name service queries asynchronously
+Description     : ATA S.M.A.R.T. reader and parser library
+Description     : Library to control A/V devices using the 1394 TA AV/C commands
+Description     : C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp hash functions
+Description     : A library for manipulating block devices
+Description     : A library for manipulating block devices - crypto support
+Description     : A library for manipulating block devices - filesystem support
+Description     : A library for manipulating block devices - loop device support
+Description     : A library for manipulating block devices - MDRAID support
+Description     : A library for manipulating block devices - NVME support
+Description     : A library for manipulating block devices - partitioning support
+Description     : A library for manipulating block devices - S.M.A.R.T. support
+Description     : A library for manipulating block devices - swap device support
+Description     : Library to access Blu-Ray disks for video playback
+Description     : Library for loading eBPF programs and reading and manipulating eBPF objects from user-space
+Description     : Bauer stereophonic-to-binaural DSP effect library
+Description     : Provides useful functions commonly found on BSD systems like strlcpy()
+Description     : A tiny library providing a C "class" for working with arbitrary big sizes in bytes
+Description     : A small and lightweight implementation of the XDG Sound Theme Specification
+Description     : POSIX 1003.1e capabilities
+Description     : A library for Linux that makes using posix capabilities easy
+Description     : OpenPrinting CUPS - client libraries and headers
+Description     : Lightweight C library that eases the writing of UNIX daemons
+Description     : Double-array trie library
+Description     : Client-side decorations library for Wayland clients
+Description     : Heavily optimized library for DEFLATE/zlib/gzip compression and decompression
+Description     : EDID and DisplayID library
+Description     : A software for reading and writing Data Matrix 2D barcodes
+Description     : Library to read and write Dolby Vision metadata
+Description     : Userspace interface to kernel DRM services
+Description     : Library to navigate DVD video disks
+Description     : Library for reading DVD video disks
+Description     : A library that implements the EBU R 128 standard for loudness normalisation
+Description     : Command line editor library providing generic line editing, history, and tokenization functions
+Description     : Library for Emulated Input
+Description     : Handle ELF object files and DWARF debugging information (libraries)
+Description     : Library handling OpenGL function pointer management
+Description     : Wrapper library for evdev devices
+Description     : Event notification library
+Description     : Fraunhofer FDK AAC codec library
+Description     : Portable foreign function interface library
+Description     : X11 font encoding library
+Description     : Open Source aptX codec library
+Description     : Fully feature complete YAML parser and emitter
+Description     : General purpose cryptographic library based on the code from GnuPG
+Description     : A linkable library for Git
+Description     : The GL Vendor-Neutral Dispatch library
+Description     : Support library for libgcrypt
+Description     : GObject bindings for libudev
+Description     : X11 Inter-Client Exchange library
+Description     : Free software implementation of IDNA2008, Punycode and TR46
+Description     : A higher level API for streaming DV, MPEG-2 and audio over Linux IEEE 1394
+Description     : Library to communicate with services on iOS devices using native protocols
+Description     : A library with common code used by libraries and tools around the libimobiledevice project
+Description     : A simple .INI file parser written in C
+Description     : Input device management and event handling library
+Description     : JPEG image codec with accelerated baseline compression and decompression
+Description     : JPEG XL image format reference implementation
+Description     : A library to manipulate pictures metadata
+Description     : Library for working with X.509 certificates, CMS data and related objects
+Description     : KDE screen management software
+Description     : Library to retrieve information on the current status of computer hardware
+Description     : Low Complexity Communication Codec library and tools
+Description     : LDAC Bluetooth encoder library
+Description     : Lightweight Directory Access Protocol (LDAP) client libraries
+Description     : Features that can be dropped into libmakepkg to extend the functionality of makepkg
+Description     : Message Digest functions from BSD systems
+Description     : Minimalistic user-space library oriented to Netlink developers.
+Description     : A MOD playing library
+Description     : Library implementation of the Media Transfer Protocol
+Description     : C library to read HRTFs if they are stored in the AES69-2015 SOFA format
+Description     : Library providing an API to the in-kernel connection tracking state table
+Description     : Low-level library for netfilter related kernel/userspace communication
+Description     : Netfilter library providing interface to the nf_tables subsystem
+Description     : Framing layer of HTTP/2 is implemented as a reusable C library
+Description     : HTTP/3 library written in C
+Description     : Implementation of IETF QUIC protocol
+Description     : Library for applications dealing with netlink sockets
+Description     : Public client interface library for NIS(YP)
+Description     : C Library for NVM Express on Linux
+Description     : Ogg bitstream and framing library
+Description     : A library to render tracker music to a PCM audio stream
+Description     : Loads and enumerates PKCS#11 modules (library)
+Description     : A system-independent interface for user-level packet capture
+Description     : X11 PCI access library
+Description     : Library implementing the Pragmatic General Multicast (PGM, RFC3208) reliable transport protocol (OpenPGM)
+Description     : Low-latency audio/video router and processor - client library
+Description     : Reusable library for GPU-accelerated video/image rendering primitives
+Description     : Plasma library and runtime components
+Description     : Library to handle Apple Property List files
+Description     : A collection of routines used to create PNG format graphics files
+Description     : Automatic proxy configuration management library
+Description     : Public Suffix List library
+Description     : A featureful, general-purpose sound server (client library)
+Description     : Helper library to make writing accessibility tools easier
+Description     : Multi-purpose desktop calculator
+Description     : Provides an API to the Linux IEEE1394 (FireWire) driver
+Description     : SVG rendering library
+Description     : An audio sample rate conversion library
+Description     : Cyrus Simple Authentication Service Layer (SASL) library
+Description     : Enhanced seccomp library
+Description     : Library for storing and retrieving passwords and other secrets
+Description     : X11 Session Management library
+Description     : A C library for reading and writing files containing sampled audio data
+Description     : A modern, portable, easy to use crypto library
+Description     : The SoX Resampler library that aims to give fast and high quality results for any constant resampling ratio
+Description     : Library for accessing ssh client services through C libraries
+Description     : A library implementing the SSH2 protocol as defined by Internet Drafts
+Description     : Stemming library supporting several languages
+Description     : Kernel based performance profiler - capture library
+Description     : The ASN.1 library used in GNUTLS
+Description     : Library handling the communication with Apple's Tatsu Signing Server (TSS)
+Description     : Thai language support library
+Description     : Standard encoder and decoder library for the Theora video compression format
+Description     : Library for manipulation of TIFF images
+Description     : Transport Independent RPC library (SunRPC replacement)
+Description     : A generic library support script
+Description     : An implementation of the line breaking algorithm as described in Unicode 5.2.0 Standard Annex 14, Revision 24
+Description     : Library for manipulating Unicode strings and C strings
+Description     : Determine and manipulate the call-chain of a program
+Description     : Linux-native io_uring I/O access library
+Description     : Library that provides generic access to USB devices
+Description     : Client library to multiplex connections from and to iOS devices
+Description     : Interface for terminal emulators to record user sessions to utmp and wtmp files
+Description     : Video Acceleration (VA) API for Linux
+Description     : Nvidia VDPAU library
+Description     : Main event loop abstraction library
+Description     : Reference implementation of the Ogg Vorbis audio format
+Description     : Intel Video Processing Library
+Description     : VP8 and VP9 codec
+Description     : Library to identify Wacom tablets and their features
+Description     : winbind client library
+Description     : WebP image codec library
+Description     : Session / policy manager implementation for PipeWire - client library
+Description     : X11 client-side library
+Description     : X11 authorisation library
+Description     : X11 Athena Widget library
+Description     : X11 client-side library
+Description     : Modern library for one-way hashing of passwords
+Description     : X cursor management library
+Description     : library providing a standalone version of the X server implementation of the VESA CVT standard timing modelines generator
+Description     : X11 Display Manager Control Protocol library
+Description     : X11 miscellaneous extensions library
+Description     : X11 miscellaneous 'fixes' extension library
+Description     : X11 font rasterisation library
+Description     : FreeType-based font drawing library for X
+Description     : X11 Input extension library
+Description     : Keymap handling library for toolkits and window systems
+Description     : Keyboard handling library using XKB data for X11 XCB clients
+Description     : X11 keyboard file manipulation library
+Description     : XML C parser and toolkit
+Description     : Library to help create and query binary XML blobs
+Description     : X11 miscellaneous micro-utility library
+Description     : X11 pixmap library
+Description     : X11 RandR extension library
+Description     : X Rendering Extension client library
+Description     : a library that exposes a event API on top of Linux futexes
+Description     : XML stylesheet transformation library
+Description     : X11 toolkit intrinsics library
+Description     : library for XTEST & RECORD extensions
+Description     : X11 Video extension library
+Description     : X11 XFree86 video mode extension library
+Description     : A set of common license files
+Description     : A C library interface to the LV2 plug-in standard
+Description     : Kernel headers sanitized for use in userspace
+Description     : The Linux BORE scheduler and hardened Kernel by CachyOS with other patches and improvements kernel and modules
+Description     : zfs module for the Linux BORE scheduler and hardened Kernel by CachyOS with other patches and improvements kernel
+Description     : The Linux BORE + Cachy Sauce Kernel by CachyOS with other patches and improvements - Long Term Service kernel and modules
+Description     : zfs module for the Linux BORE + Cachy Sauce Kernel by CachyOS with other patches and improvements - Long Term Service kernel
+Description     : Port of http_parser to llparse
+Description     : LLVM runtime libraries
+Description     : Collection of user space tools for general SMBus access and hardware monitoring
+Description     : Symas Lightning Memory-Mapped Database
+Description     : Find orphaned files not owned by any Arch packages
+Description     : Lists open files for running Unix processes
+Description     : Powerful lightweight programming language designed for extending applications
+Description     : Plugin standard for audio systems
+Description     : A text browser for the World Wide Web
+Description     : Extremely fast compression algorithm
+Description     : Portable lossless data compression library
+Description     : Helper application and MIME type associations for file types
+Description     : Linux man pages
+Description     : C Markdown parser
+Description     : A tool for managing/monitoring Linux md device arrays, also known as Software RAID
+Description     : Data files describing media player capabilities, mostly of mass-storage devices
+Description     : Open-source OpenGL drivers
+Description     : A dedicated search application built on top of Baloo
+Description     : Modular initramfs image creation utility
+Description     : Base initramfs tools
+Description     : Compatibility between systemd and ZFS roots
+Description     : Package for correctly-rounded arbitrary precision decimal floating point arithmetic
+Description     : Multiple-precision floating-point library
+Description     : Console based real time MPEG Audio Player for Layer 1, 2 and 3
+Description     : A stand-alone library which transforms all variants of kernel MT events to the slotted type B protocol
+Description     : System V Release 4.0 curses emulation library
+Description     : A low-level cryptographic library
+Description     : Google Noto TTF fonts
+Description     : The new GNU portable threads library
+Description     : Netscape Portable Runtime
+Description     : Network Security Services
+Description     : NVIDIA drivers utilities
+Description     : NVM-Express user space tooling for Linux
+Description     : Ocean Sound Theme for Plasma
+Description     : OpenCL ICD Bindings
+Description     : a regular expressions library
+Description     : Open source implementation of the Adaptive Multi Rate (AMR) speech codec
+Description     : An open source JPEG 2000 codec, version 2.5.4
+Description     : The Open Source toolkit for Secure Sockets Layer and Transport Layer Security
+Description     : Totally open, royalty-free, highly versatile audio codec
+Description     : Optimized Inner Loop Runtime Compiler
+Description     : Loads and enumerates PKCS#11 modules
+Description     : A library-based package manager with dependency support. CachyOS fork.
+Description     : Arch Linux mirror list for use by pacman
+Description     : Helper tools for libalpm
+Description     : Type info tools
+Description     : PAM (Pluggable Authentication Modules) library
+Description     : Base PAM configuration for services
+Description     : A library for layout and rendering of text
+Description     : A program for creating, destroying, resizing, checking and copying partitions
+Description     : Feature packed AUR helper
+Description     : PCI bus configuration space access library and tools
+Description     : A deprecated library that implements Perl 5-style regular expressions
+Description     : A library that implements Perl 5-style regular expressions. 2nd version
+Description     : A highly capable, feature-rich programming language
+Description     : Perl/CPAN Error module - Error/exception handling in an OO-ish way
+Description     : Various e-mail related modules
+Description     : Date formating subroutines
+Description     : Collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol
+Description     : Low-latency audio/video router and processor
+Description     : Low-latency audio/video router and processor - Audio support
+Description     : Low-latency audio/video router and processor - JACK replacement
+Description     : The pixel-manipulation library for X and cairo
+Description     : A tool to search for files in official repository packages
+Description     : Core components for KDE Activities
+Description     : A library for accessing the usage data collected by the activities system
+Description     : Qt Platform Theme integration plugins for the Plasma workspaces
+Description     : KDE Plasma Workspace
+Description     : Support components for porting from KF5/Qt5 to KF6/Qt6
+Description     : Application development toolkit for controlling system-wide privileges
+Description     : A library that allows developers to access PolicyKit API with a nice Qt-style API
+Description     : A commandline option parser
+Description     : A free, cross-platform, open source, audio I/O library.
+Description     : A barcode API to produce QRCode barcodes and DataMatrix barcodes
+Description     : Utilities for monitoring your system and its processes
+Description     : Miscellaneous procfs tools
+Description     : The Python programming language
+Description     : Qt Cryptographic Architecture
+Description     : Applications useful for Plasma development
+Description     : A style for Qt Quick Controls 2 to make it follow your desktop theme
+Description     : C library for encoding data in a QR Code symbol.
+Description     : Module that contains unsupported Qt 5 APIs
+Description     : A cross-platform application and UI framework
+Description     : Classes for QML and JavaScript languages
+Description     : Helps you create viable mapping solutions using the data available from some of the popular location services
+Description     : Classes for audio, video, radio and camera functionality
+Description     : FFMpeg backend for qt6-multimedia
+Description     : Provides access to position, satellite and area monitoring classes
+Description     : Provides access to sensor hardware and motion gesture recognition
+Description     : Provides functionality for the shader pipeline that allows Qt Quick to operate on Vulkan, Metal, and Direct3D, in addition to OpenGL
+Description     : Qt Speech support
+Description     : Classes for displaying the contents of SVG files
+Description     : A cross-platform application and UI framework (Development Tools, QtHelp)
+Description     : A cross-platform application and UI framework (Translations)
+Description     : Virtual keyboard framework
+Description     : Everyday-use client-side map-aware mirror ranking tool
+Description     : An AV1 encoder focused on speed and safety
+Description     : GNU readline library
+Description     : A search tool that combines the usability of ag with the raw speed of grep
+Description     : rga: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
+Description     : A fast and versatile file copying tool for remote and local files
+Description     : Realtime Policy and Watchdog Daemon
+Description     : Time-stretching and pitch-shifting audio library and utility
+Description     : Bluetooth Subband Codec (SBC) library
+Description     : An SDL2 compatibility layer that uses SDL3 behind the scenes
+Description     : A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)
+Description     : GNU stream editor
+Description     : Lightweight C library for RDF syntax supporting reading/ writing Turtle and NTriples
+Description     : Collection of tools, libraries and tests for shader compilation
+Description     : Password and account management tool suite with support for shadow files and PAM
+Description     : Freedesktop.org Shared MIME Info
+Description     : Tools to access a server's filespace and printers via SMB
+Description     : A fast compressor/decompressor library
+Description     : Hardware integration and detection
+Description     : Spelling framework for Qt
+Description     : A lightweight C library for storing RDF data in memory
+Description     : Freedesktop sound theme
+Description     : A free codec for free speech
+Description     : DSP library derived from Speex
+Description     : API and commands for processing SPIR-V modules
+Description     : A C library that implements an SQL database engine
+Description     : An LV2 Atom RDF serialisation library
+Description     : Secure Reliable Transport library
+Description     : A zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc.
+Description     : Scalable Video Technology AV1 encoder and decoder
+Description     : RSS/Atom parser library
+Description     : Syntax highlighting engine for structured text and code
+Description     : System Utilities Based on Sysfs
+Description     : system and service manager
+Description     : systemd client libraries
+Description     : sysvinit compat for systemd
+Description     : Hierarchical pool based memory allocator with destructors
+Description     : Utility used to store, backup, and transport files
+Description     : Powerful, easy-to-learn dynamic programming language
+Description     : Trivial Database similar to GDBM but allows simultaneous commits
+Description     : A fast tldr client in Rust
+Description     : Monospace bitmap font (for X11 and console)
+Description     : Event system based on the talloc memory management library
+Description     : Implementation of the TCG Trusted Platform Module 2.0 Software Stack (TSS2)
+Description     : Touchscreen Access Library
+Description     : A hand groomed and optically balanced typeface based on Bitstream Vera Mono.
+Description     : Sources for time zone and daylight saving time data
+Description     : Daemon, tools and libraries to access and manipulate disks, storage devices and technologies
+Description     : Abstraction for enumerating power devices, listening to device events and querying history and statistics
+Description     : Miscellaneous system utilities for Linux
+Description     : util-linux runtime libraries
+Description     : Userspace tools and conversion library for Video 4 Linux
+Description     : A video processing framework with the future in mind
+Description     : Video stabilization library
+Description     : Vi Improved, a highly configurable, improved version of the vi text editor
+Description     : Vi Improved, a highly configurable, improved version of the vi text editor (shared runtime)
+Description     : Perceptual video quality assessment algorithm based on multi-method fusion
+Description     : A library for manipulating storage volume encryption keys and storing them separately from volumes to handle forgotten passphrases
+Description     : Vulkan Installable Client Driver (ICD) Loader
+Description     : A computer display server protocol
+Description     : AudioProcessing library based on Google's implementation of WebRTC (legacy)
+Description     : Network utility to retrieve files from the web
+Description     : Session / policy manager implementation for PipeWire
+Description     : Open Source H264/AVC video encoder
+Description     : Open Source H265/HEVC video encoder
+Description     : XML-XCB protocol descriptions
+Description     : Utility libraries for XC Binding
+Description     : XCB cursor library
+Description     : Utility libraries for XC Binding - Port of Xlib's XImage and XShmImage functions
+Description     : Utility libraries for XC Binding - Standard X key constants and conversion to/from keycodes
+Description     : Utility libraries for XC Binding - Convenience functions for the Render extension
+Description     : Utility libraries for XC Binding - client and window-manager helpers for ICCCM
+Description     : Desktop integration portals for sandboxed apps
+Description     : A backend implementation for xdg-desktop-portal using Qt/KF5
+Description     : Command line tools that assist applications with a variety of desktop integration tasks
+Description     : X keyboard configuration files
+Description     : X.org font encoding files
+Description     : Xorg server common files
+Description     : Set the keyboard using the X Keyboard Extension
+Description     : X Keyboard description compiler
+Description     : Display a message or query in a window
+Description     : X server resource database utility
+Description     : run X clients under wayland
+Description     : combined X.Org X11 Protocol headers
+Description     : XviD is an open source MPEG-4 video codec
+Description     : Extremely fast non-cryptographic hash algorithm
+Description     : Library and command line tools for XZ and LZMA compressed files
+Description     : Fast messaging system built on sockets. C and C++ bindings. aka 0MQ, ZMQ.
+Description     : Userspace utilities for the Zettabyte File System.
+Description     : Scaling, colorspace conversion, and dithering library
+Description     : A lightweight C99 portability and data structure library
+Description     : zlib replacement with optimizations for next generation systems
+Description     : zlib replacement with optimizations for next generation systems (zlib compat)
+Description     : Zstandard - Fast real-time compression algorithm
+Description     : An open-source, multi-format linear/matrix barcode image processing library implemented in C++

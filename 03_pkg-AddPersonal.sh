@@ -22,12 +22,13 @@ AddPackage cachyos-v4-mirrorlist # CachyOS repository mirrorlist
 AddPackage wget # Network utility to retrieve files from the web
 AddPackage nvme-cli # NVM-Express user space tooling for Linux
 AddPackage gptfdisk # A text-mode partitioning tool that works on GUID Partition Table (GPT) disks
-AddPackage linux-cachyos-lts-zfs # zfs module for the Linux BORE + Cachy Sauce Kernel by CachyOS with other patches and improvements - Long Term Service kernel
 AddPackage expect # A tool for automating interactive applications
 AddPackage sysfsutils # System Utilities Based on Sysfs
 
-AddPackage terminus-font
-AddPackage inux-cachyos-hardened-zfs
-AddPackage inux-cachyos-lts-zfs
-AddPackage kinitcpio-sd-zfs
-AddPackage fs-utils
+AddPackage linux-cachyos-hardened-zfs # zfs module + Linux BORE Scheduler + CachyOS patches, Hardened; LTS kernel
+AddPackage terminus-font # A font
+AddPackage cachyos-rate-mirrors # CachyOS - Rate mirrors; upgraded reflector
+
+AddPackage man-pages # Linux man pages
+AddPackage mkinitcpio-sd-zfs # Compatibility between systemd and ZFS roots
+AddPackage man-db # A utility for reading man pages

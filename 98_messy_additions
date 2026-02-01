@@ -1,0 +1,5 @@
+CopyFile /etc/dirmngr.conf
+CopyFile /usr/lib/systemd/system/basic.target
+CopyFile /usr/lib/systemd/system/systemd-homed.service
+CopyFile /usr/lib/systemd/system/zfs.target
+IgnoreFile /etc/gnupg/S.dirmngr /etc/gnupg/S.gpg-agent.ssh /etc/gnupg/S.gpg-agent.browser /etc/gnupg/S.gpg-agent.extra /etc/gnupg/S.gpg-agent
