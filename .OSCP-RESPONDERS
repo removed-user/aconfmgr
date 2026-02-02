@@ -6,3 +6,28 @@ http://ocsp.digicert.com.
 http://ocsp.sectigo.com
 #GlobalSign: 
 http://ocsp.globalsign.com/gsalphasha2g2
+
+
+### Common OCSP Responder IP Addresses (2026)
+Most major CAs use CDNs (like Cloudflare or Akamai), so IPs can change. However, [DigiCert officially publishes static IPs](https://docs.digicert.com/en/platform-overview/platform-ip-addresses-and-urls.html) for firewall whitelisting:
+
+*   **DigiCert (Current/New for 2026):**
+    *   `162.159.142.7`
+    *   `162.159.142.9`
+    *   `23.11.38.161`
+    *   `23.11.39.161`
+    *   `172.66.2.3`
+*   **GlobalSign (MPIC/Atlas Nodes):**
+    *   `18.205.30.124` (US-East)
+    *   `54.215.173.133` (US-West)
+*   **Sectigo:** 
+    *   Uses Cloudflare Anycast; common IPs include `104.18.14.232` and `104.18.15.232`.
+
+---
+
+### How to Validate OCSP IPs
+
+#### 1. Find the Responder URL for a Certificate
+Use [OpenSSL](https://docs.openssl.org) to extract the OCSP endpoint from a specific certificate file:
+```bash
+openssl x509 -in certificate.crt -noout -ocsp_uri
