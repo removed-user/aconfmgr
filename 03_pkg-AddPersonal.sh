@@ -10,8 +10,8 @@ AddPackage lsof # Lists open files for running Unix processes
 AddPackage pacutils # Helper tools for libalpm
 AddPackage rsync # A fast and versatile file copying tool for remote and local files
 AddPackage lynx # A text browser for the World Wide Web
-AddPackage --foreign paru # Feature packed AUR helper
-AddPackage --foreign zfs-utils # Userspace utilities for the Zettabyte File System.
+AddPackage paru # Feature packed AUR helper
+AddPackage zfs-utils # Userspace utilities for the Zettabyte File System.
 AddPackage github-cli # The GitHub CLI
 AddPackage bash-completion # Programmable completion for the bash shell
 AddPackage cachyos-mirrorlist # CachyOS repository mirrorlist

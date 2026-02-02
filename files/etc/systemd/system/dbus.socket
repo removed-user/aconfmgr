@@ -6,3 +6,4 @@
  ListenStream=/run/dbus/system_bus_socket
  [Install]
  Alias=dbus-broker.socket
+ Alias=dbus.socket
