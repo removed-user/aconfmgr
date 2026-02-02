@@ -1,87 +1,98 @@
-0x77514E00	91FF E070 0E80 619C EB73  235C A88E 23E3 7751 4E00	Florian Pritz	0x4CE1C13E	Lukas Fleischer	0x9326B440	70
-0x27843F1C	D8AF DDA0 7A5B 6EDF A7D8  CCDA D6D0 55F9 2784 3F1C	Levente Polyak	0x8D8172C8	Evangelos Foutras	0xA9999C34	61
-0x7BE9892E	2AC0 A42E FB0B 5CBC 7A04  02ED 4DC9 5B6D 7BE9 892E	David Runge	0x5BF0D338	Christian Hesse	0x498E9CEE	71
-0x037F4F41	69E6 471E 3AE0 6529 7529  832E 6BA0 F5A2 037F 4F41	Johannes Löthberg	0x3A9D0BB5	Maxime Gauduin	0x81506130	69
-0x2A6FDCD7	3572 FA2A 1B06 7F22 C58A  F155 F8B8 21B4 2A6F DCD7	Leonidas Spyropoulos	0x7C7FD0EC	Frederik Schwan	0x5426DA0A	58
-Master Key Signatures
-Visualization of PGP Master and Developer Keys
-Developer Cross-Signatures
-Master Key Signatures
+0x77514E00      91FF E070 0E80 619C EB73  235C A88E 23E3 7751 4E00      Florian Pritz             0x4CE1C13E      Lukas Fleischer      0x9326B440      70
+0x27843F1C      D8AF DDA0 7A5B 6EDF A7D8  CCDA D6D0 55F9 2784 3F1C      Levente Polyak            0x8D8172C8      Evangelos Foutras      0xA9999C34      61
+0x7BE9892E      2AC0 A42E FB0B 5CBC 7A04  02ED 4DC9 5B6D 7BE9 892E      David Runge               0x5BF0D338      Christian Hesse      0x498E9CEE      71
+0x037F4F41      69E6 471E 3AE0 6529 7529  832E 6BA0 F5A2 037F 4F41      Johannes Löthberg         0x3A9D0BB5      Maxime Gauduin      0x81506130      69
+0x2A6FDCD7      3572 FA2A 1B06 7F22 C58A  F155 F8B8 21B4 2A6F DCD7      Leonidas Spyropoulos      0x7C7FD0EC      Frederik Schwan      0x5426DA0A      58
+
+# Master Key Signatures
+##   Visualization of PGP Master and Developer Keys Cross-Signatures
+
+
 The following table shows all active developers and package maintainers along with the status of their personal signing key. A 'Yes' indicates that the personal key of the developer is signed by the given master key. A 'No' indicates it has not been signed; however, this does not necessarily mean the key should not be trusted.
 
 All official Arch Linux developers and package maintainers should have their key signed by at least three master keys if they are responsible for packaging software in the repositories. This is in accordance with the PGP web of trust concept. If a user is willing to marginally trust all of the master keys, three signatures from different master keys will consider a given developer's key as valid. For more information on trust, please consult the GNU Privacy Handbook and Using trust to validate keys.
 
-Alexander Epaneshnikov	0x6C897266	Yes	Yes	Yes	Yes	Yes
-Alexander Rødseth	0xF13FF192	Yes	Yes	Yes	Yes	Yes
-Allan McRae	0xEAE999BD	Yes	Yes	No	No	No
-Anatol Pomozov	0x753E0F1F	Yes	Yes	Yes	Yes	No
-Andreas Radke	0x0F2A092B	Yes	Yes	Yes	Yes	Yes
-Andreas Schleifer	0x96402E7C	Yes	Yes	Yes	Yes	Yes
-Andrew Crerar	0x3ECDBC9F	Yes	Yes	Yes	Yes	Yes
-Andrew Gregory	0x3C352040	No	No	No	No	No
-Anton Hvornum	0x7A929F2E	Yes	Yes	Yes	Yes	Yes
-Antonio Rojas	0x941C2A25	Yes	No	Yes	Yes	Yes
-Balló György	0xD1C9CAF6	Yes	Yes	Yes	Yes	Yes
-Bert Peters	0x2703040C	No	Yes	Yes	Yes	Yes
-Brett Cornwall	0x0F8E620A	Yes	No	Yes	Yes	Yes
-Bruno Pagani	0xDAAF9129	Yes	No	Yes	Yes	Yes
-Caleb Maclennan	0x8A5A5B67	Yes	No	Yes	Yes	No
-Campbell Jones	0x496F6680	Yes	Yes	Yes	Yes	Yes
-Carl Smedstad	0x083BA25E	Yes	Yes	Yes	Yes	Yes
-Carsten Haitzler	0x64295E8C	Yes	No	Yes	Yes	Yes
-Chih-Hsuan Yen	0xFC794362	Yes	Yes	Yes	Yes	Yes
-Christian Hesse	0x498E9CEE	Yes	Yes	Yes	Yes	Yes
-Christian Heusel	0x4C197E3D	Yes	Yes	Yes	Yes	Yes
-Christian Rebischke	0xDFE2060D	Yes	Yes	Yes	Yes	No
-Connor Behan	0xDBAD6F47	Yes	Yes	Yes	Yes	Yes
-Dan Johansen	0x0D5CD322	No	Yes	Yes	Yes	Yes
-Dan Printzell	0xF2DF9BC5	Yes	No	Yes	Yes	Yes
-Daniel Bermond	0xEB48BC95	Yes	No	Yes	Yes	No
-Daniel M. Capella	0x1A906AD9	Yes	Yes	Yes	Yes	Yes
-Daurnimator	0x192C187A	Yes	Yes	Yes	Yes	Yes
-David Runge	0x5BF0D338	Yes	Yes	Yes	Yes	Yes
-Fabian Bornschein	0xF340C1E0	Yes	Yes	Yes	Yes	No
-Fabio Castelli	0xC2BDA011	Yes	No	Yes	Yes	Yes
-Felix Yan	0x30D7CB92	Yes	Yes	Yes	Yes	No
-Filipe Laíns	0xB0EB4BF2	Yes	Yes	Yes	Yes	No
-Frederik Schwan	0x5426DA0A	Yes	Yes	Yes	Yes	Yes
-George Hu	0x057DD5A8	No	Yes	Yes	Yes	Yes
-George Rawlinson	0xD9EA5EBC	Yes	Yes	Yes	No	Yes
-Giancarlo Razzolini	0x8A77AEAB	Yes	Yes	Yes	Yes	Yes
-Giovanni Harting	0xD906F59E	No	Yes	Yes	Yes	Yes
-Ike Devolder	0x39448BFF	Yes	No	Yes	Yes	Yes
-Jakub Klinkovský	0x0BE8D911	Yes	Yes	Yes	Yes	Yes
-Jan Alexander Steffens	0x0F108CDF	Yes	Yes	Yes	Yes	Yes
-Jaroslav Lichtblau	0x013C2580	Yes	Yes	Yes	Yes	Yes
-Jelle van der Waa	0x7C50773E	Yes	Yes	Yes	Yes	Yes
-Johannes Löthberg	0x3A9D0BB5	Yes	Yes	Yes	Yes	Yes
-Jonathan Steel	0xF40D2072	Yes	Yes	Yes	Yes	Yes
-Justin Kromlinger	0xAC8EBE67	Yes	Yes	Yes	Yes	No
-Jürgen Hötzel	0x135182EF	Yes	Yes	Yes	Yes	Yes
-Konstantin Gizdov	0x76938292	Yes	No	Yes	Yes	Yes
-Laurent Carlier	0xD1CEDDAC	Yes	Yes	Yes	Yes	Yes
-Leonidas Spyropoulos	0x7C7FD0EC	Yes	Yes	Yes	Yes	Yes
-Levente Polyak	0x8D8172C8	Yes	Yes	Yes	Yes	Yes
-Lukas Fleischer	0x9326B440	Yes	Yes	Yes	Yes	Yes
-Martin Rys	Unknown	No	No	No	No	No
-Massimiliano Torromeo	0x3429DDEF	Yes	No	Yes	Yes	Yes
-Maxime Gauduin	0x81506130	Yes	Yes	Yes	Yes	Yes
-Morgan Adamiec	0x26DE47C5	Yes	No	Yes	No	Yes
-Morten Linderud	0x9FECBE16	Yes	Yes	Yes	Yes	Yes
-Orhun Parmaksız	0x4B3E4B90	Yes	Yes	Yes	Yes	No
-Peter Jung	0xBB5C8D29	No	Yes	Yes	Yes	Yes
-Pierre Schmitz	0x54449A5C	Yes	Yes	Yes	Yes	Yes
-Quentin Michaud	0xD5490BD3	No	Yes	Yes	Yes	Yes
-Remi Gacogne	0xDD1A4146	Yes	Yes	Yes	Yes	Yes
-Robin Candau	0x92ACA748	Yes	Yes	Yes	Yes	Yes
-Santiago Torres	0xE8162295	Yes	Yes	Yes	Yes	No
-Sergej Pupykin	0x54BBE4AD	Yes	No	Yes	Yes	Yes
-Sven-Hendrik Haase	0xE62EB915	Yes	Yes	Yes	Yes	Yes
-Sébastien Luttringer	0x2072D77A	Yes	Yes	Yes	Yes	Yes
-T.J. Townsend	0x0368C6CE	Yes	Yes	Yes	Yes	Yes
-Thore Bödecker	0x9DB887A6	Yes	Yes	Yes	Yes	No
-Tim Meusel	0x53CBB7BA	Yes	Yes	Yes	Yes	No
-Tobias Powalowski	0x7EDF681F	Yes	No	Yes	Yes	Yes
-Tomaz Canabrava	0xECE4DCE6	No	Yes	Yes	Yes	Yes
-Torsten Keßler	0xCA5B31BE	Yes	Yes	Yes	Yes	Yes
-kpcyrd	0xF5E54FD6	Yes	Yes	
+Alexander Epaneshnikov      0x6C897266      Yes      Yes      Yes      Yes      Yes
+Alexander Rødseth           0xF13FF192      Yes      Yes      Yes      Yes      Yes
+Andreas Radke               0x0F2A092B      Yes      Yes      Yes      Yes      Yes
+Andreas Schleifer           0x96402E7C      Yes      Yes      Yes      Yes      Yes
+Andrew Crerar               0x3ECDBC9F      Yes      Yes      Yes      Yes      Yes
+Anton Hvornum               0x7A929F2E      Yes      Yes      Yes      Yes      Yes
+Balló György                0xD1C9CAF6      Yes      Yes      Yes      Yes      Yes
+Campbell Jones              0x496F6680      Yes      Yes      Yes      Yes      Yes
+Carl Smedstad               0x083BA25E      Yes      Yes      Yes      Yes      Yes
+Chih-Hsuan Yen              0xFC794362      Yes      Yes      Yes      Yes      Yes
+Christian Hesse             0x498E9CEE      Yes      Yes      Yes      Yes      Yes
+Christian Heusel            0x4C197E3D      Yes      Yes      Yes      Yes      Yes
+Connor Behan                0xDBAD6F47      Yes      Yes      Yes      Yes      Yes
+Daniel M. Capella           0x1A906AD9      Yes      Yes      Yes      Yes      Yes
+Daurnimator                 0x192C187A      Yes      Yes      Yes      Yes      Yes
+David Runge                 0x5BF0D338      Yes      Yes      Yes      Yes      Yes
+Frederik Schwan             0x5426DA0A      Yes      Yes      Yes      Yes      Yes
+Giancarlo Razzolini         0x8A77AEAB      Yes      Yes      Yes      Yes      Yes
+Jakub Klinkovský            0x0BE8D911      Yes      Yes      Yes      Yes      Yes
+Jan Alexander Steffens      0x0F108CDF      Yes      Yes      Yes      Yes      Yes
+Jaroslav Lichtblau          0x013C2580      Yes      Yes      Yes      Yes      Yes
+Jelle van der Waa           0x7C50773E      Yes      Yes      Yes      Yes      Yes
+Johannes Löthberg           0x3A9D0BB5      Yes      Yes      Yes      Yes      Yes
+Jonathan Steel              0xF40D2072      Yes      Yes      Yes      Yes      Yes
+Jürgen Hötzel               0x135182EF      Yes      Yes      Yes      Yes      Yes
+Laurent Carlier             0xD1CEDDAC      Yes      Yes      Yes      Yes      Yes
+Leonidas Spyropoulos        0x7C7FD0EC      Yes      Yes      Yes      Yes      Yes
+Levente Polyak              0x8D8172C8      Yes      Yes      Yes      Yes      Yes
+Lukas Fleischer             0x9326B440      Yes      Yes      Yes      Yes      Yes
+Maxime Gauduin              0x81506130      Yes      Yes      Yes      Yes      Yes
+Morten Linderud             0x9FECBE16      Yes      Yes      Yes      Yes      Yes
+Pierre Schmitz              0x54449A5C      Yes      Yes      Yes      Yes      Yes
+Remi Gacogne                0xDD1A4146      Yes      Yes      Yes      Yes      Yes
+Robin Candau                0x92ACA748      Yes      Yes      Yes      Yes      Yes
+Sven-Hendrik Haase          0xE62EB915      Yes      Yes      Yes      Yes      Yes
+Sébastien Luttringer        0x2072D77A      Yes      Yes      Yes      Yes      Yes
+T.J. Townsend               0x0368C6CE      Yes      Yes      Yes      Yes      Yes
+Torsten Keßler              0xCA5B31BE      Yes      Yes      Yes      Yes      Yes
+
+
+
+
+
+
+Orhun Parmaksız             0x4B3E4B90      Yes      Yes      Yes      Yes      No
+Tim Meusel                  0x53CBB7BA      Yes      Yes      Yes      Yes      No
+Thore Bödecker              0x9DB887A6      Yes      Yes      Yes      Yes      No
+Santiago Torres             0xE8162295      Yes      Yes      Yes      Yes      No
+kpcyrd                      0xF5E54FD6      Yes      Yes      
+Justin Kromlinger           0xAC8EBE67      Yes      Yes      Yes      Yes      No
+George Hu                   0x057DD5A8      No      Yes      Yes      Yes      Yes
+George Rawlinson            0xD9EA5EBC      Yes      Yes      Yes      No      Yes
+Bert Peters                 0x2703040C      No      Yes      Yes      Yes      Yes
+Brett Cornwall              0x0F8E620A      Yes      No      Yes      Yes      Yes
+Bruno Pagani                0xDAAF9129      Yes      No      Yes      Yes      Yes
+Caleb Maclennan             0x8A5A5B67      Yes      No      Yes      Yes      No
+Carsten Haitzler            0x64295E8C      Yes      No      Yes      Yes      Yes
+Christian Rebischke         0xDFE2060D      Yes      Yes      Yes      Yes      No
+Anatol Pomozov              0x753E0F1F      Yes      Yes      Yes      Yes      No
+Andrew Gregory              0x3C352040      No      No      No      No      No
+Antonio Rojas               0x941C2A25      Yes      No      Yes      Yes      Yes
+
+Dan Johansen                0x0D5CD322      No      Yes      Yes      Yes      Yes
+Dan Printzell               0xF2DF9BC5      Yes      No      Yes      Yes      Yes
+Daniel Bermond              0xEB48BC95      Yes      No      Yes      Yes      No
+Allan McRae                 0xEAE999BD      Yes      Yes      No      No      No
+Giovanni Harting            0xD906F59E      No      Yes      Yes      Yes      Yes
+Ike Devolder                0x39448BFF      Yes      No      Yes      Yes      Yes
+Konstantin Gizdov           0x76938292      Yes      No      Yes      Yes      Yes
+Massimiliano Torromeo       0x3429DDEF      Yes      No      Yes      Yes      Yes
+Morgan Adamiec              0x26DE47C5      Yes      No      Yes      No      Yes
+Peter Jung                  0xBB5C8D29      No      Yes      Yes      Yes      Yes
+Quentin Michaud             0xD5490BD3      No      Yes      Yes      Yes      Yes
+
+Tobias Powalowski           0x7EDF681F      Yes      No      Yes      Yes      Yes
+Tomaz Canabrava             0xECE4DCE6      No      Yes      Yes      Yes      Yes
+Sergej Pupykin              0x54BBE4AD      Yes      No      Yes      Yes      Yes
+
+
+Fabian Bornschein           0xF340C1E0      Yes      Yes      Yes      Yes      No
+Fabio Castelli              0xC2BDA011      Yes      No      Yes      Yes      Yes
+Felix Yan                   0x30D7CB92      Yes      Yes      Yes      Yes      No
+Filipe Laíns                0xB0EB4BF2      Yes      Yes      Yes      Yes      No
+Martin Rys                  Unknown      No      No      No      No      No
