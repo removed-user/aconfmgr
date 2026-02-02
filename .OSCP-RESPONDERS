@@ -1,0 +1,8 @@
+#Let's Encrypt:
+http://ocsp.int-x3.letsencrypt.org (or similar, though Note: Let's Encrypt is phasing out OCSP in 2025).
+#DigiCert: 
+http://ocsp.digicert.com.
+#Sectigo (formerly Comodo): 
+http://ocsp.sectigo.com
+#GlobalSign: 
+http://ocsp.globalsign.com/gsalphasha2g2
