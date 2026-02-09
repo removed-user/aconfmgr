@@ -1,0 +1,108 @@
+## Requires hostid
+printf '\x9d\x1c\x7a\3f' > /etc/hostid
+echo spl_hostid="0x$(hostid)" >> {tmp} mount -R over /proc/cmdline
+
+### list everything about a pool (volume,snapshot)
+
+zfs list -t all [pool_name]
+
+bootfs is a property of the pool, which points to the dataset used for booting - 
+Ie: bootfs={POOLNAME}/{ROOT DATASET}/boot
+
+-O = filesystem prop
+-o  = pool prop
+zpool create -O <fsprop>=<val> poolname
+zpool create -o <poolprop>=<val> poolname
+
+zpool initialize -auc (all,cancel,uninitialize) all pools
+zpool initialize poolname
+
+
+Zpool scrub -Cea
+Zpool reopen
+
+
+
+## zpool props -o
+
+ashift=12
+autoexpand=on
+autoreplace=on
+autotrim=on
+delegation=off
+listsnapshots=on
+multihost=off
+failmode=wait
+
+
+bootfs=zrootfs/ROOTFS/boot
+comment=text
+
+## Fsprops -O (root dataset)
+
+
+xattr=sa
+aclmode=discard
+acltype=off 
+Overlay=off
+read-only=off
+sharesmb=off
+sharenfs=off
+snapdev=visible
+snapdir=visible
+
+
+## Perdataset
+
+sudo zfs set compression=zstd-[n] poolname/dataset
+
+### all together
+
+
+sudo zpool create -f \
+-o ashift=12 \
+-o autoexpand=on \
+-o autoreplace=on \
+-o autotrim=on \
+-o delegation=off \
+-o listsnapshots=on \
+-o multihost=off \
+-o failmode=wait \
+
+-O xattr=sa \
+-O aclmode=discard \
+-O acltype=off  \
+-O overlay=off \
+-O readonly=off \
+-O sharesmb=off \
+-O sharenfs=off \
+-O snapdev=visible \
+-O snapdir=visible \
+-O mountpoint=none \
+-O atime=off 
+-O compression=zstd \
+zrootfs /dev/disk/by-id/[ID]-part2
+
+
+## Individual datasets
+
+zfs create -o mountpoint=/ zrootfs/root 
+> probably remove this one eventually, just here in case of error, cause hell has this computer been full of em
+
+
+
+for I in root etc usr var bin sbin lib lib64 home boot
+do
+zfs create -o mountpoint=/$i zrootfs/root/$i
+done
+
+
+proc /proc proc
+sysfs /sys sysfs
+devtmpfs /dev devtmpfs
+devpts /dev/pts
+
+run
+tmp
+
+Still have to set boot directory
