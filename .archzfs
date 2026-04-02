@@ -2,11 +2,11 @@
 
 CLEAN_KEYRING=true
 SKIP_FULL_KEYRING_REFRESH=true
-HOSTNAME="srv-arch-ccc"
+HOSTNAME="Cachy"
 KEYMAP="it"
-LOCALE_GEN="it_IT.UTF-8 UTF-8"
-LOCALE_CONF="LANG=it_IT.UTF-8"
-TIMEZONE="Europe/Rome"
+LOCALE_GEN="en_US.UTF-8 UTF-8"
+LOCALE_CONF="LANG=en_US.UTF-8"
+TIMEZONE="America/New_York"
 
 command_exists () {
     type "$1" &> /dev/null ;
