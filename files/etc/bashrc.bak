@@ -25,3 +25,5 @@ shopt -u interactive_comments
 export EDITOR=vim
 export PAGER=bat
 PKG_CONFIG_PATH=/etc/pkg-config
+declare -xrg CPU_FAMILY=X86_64
+declare -xrg CPU=X86_64
