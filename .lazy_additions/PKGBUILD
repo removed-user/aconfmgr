@@ -26,18 +26,43 @@ unset srcdest
 unset srcdir
 unset pkgdir
 
-function where_the_fuck_am_I() {
-
-  printf srcdir\="${srcdir}"'\n'pkgdir\="${pkgdir}"'\n'srcdest\="${srcdest}"'\n'pwd\=$(pwd)'\n'Current_Function\="${FUNCNAME[1]}"  2>&1 | tee "${FUNCNAME[0]}"_1
-  cd "${srcdir}"
-  printf srcdir\="${srcdir}"'\n'pkgdir\="${pkgdir}"'\n'srcdest\="${srcdest}"'\n'pwd\=$(pwd)'\n'Current_Function\="${FUNCNAME[1]}"  2>&1 | tee "${FUNCNAME[0]}"_2
-  cd "${SRCDIR}"
-  printf srcdir\="${srcdir}"'\n'pkgdir\="${pkgdir}"'\n'srcdest\="${srcdest}"'\n'pwd\=$(pwd)'\n'Current_Function\="${FUNCNAME[1]}"  2>&1 | tee "${FUNCNAME[0]}"_3
-}
 #SRCDEST=/var/cache/AurBuild/yay/casey/systemd-liberated-git/"${pkgbase}"
+
 SRCDIR=/var/cache/AurBuild/yay/casey/systemd-liberated-git/"${pkgbase}"
 SRCDEST=${SRCDIR}
-BUILDDIR="${SRCDIR}"/outputs/build
+
+_OUTPUTS="${SRCDIR}"/outputs
+BUILDDIR="${_OUTPUTS}"/build
+_PKGNAME=$(echo "${FUNCNAME[1]}" | sed 's#package_##g' )
+_PACKAGE_DIR="${_OUTPUTS}"/"${_PKGNAME}"
+
+
+function where_the_fuck_am_I() {
+
+_OUTPUTS="${SRCDIR}"/outputs
+BUILDDIR="${_OUTPUTS}"/build
+_PKGNAME=$(echo "${FUNCNAME[1]}" | sed 's#package_##g' )
+_PACKAGE_DIR="${_OUTPUTS}"/"${_PKGNAME}"
+  printf srcdir\="${srcdir}"'\n'pkgdir\="${pkgdir}"'\n'srcdest\="${srcdest}"'\n'pwd\=$(pwd)'\n'BUILDDIR\="${BUILDDIR}"'\n'_PACKAGE_DIR\="${_PACKAGE_DIR}"'\n'Current_Function\="${FUNCNAME[1]}"  2>&1 | tee "${FUNCNAME[0]}"_1
+  cd "${srcdir}"                                                                                                                    
+  printf srcdir\="${srcdir}"'\n'pkgdir\="${pkgdir}"'\n'srcdest\="${srcdest}"'\n'pwd\=$(pwd)'\n'BUILDDIR\="${BUILDDIR}"'\n'_PACKAGE_DIR\="${_PACKAGE_DIR}"'\n'Current_Function\="${FUNCNAME[1]}"  2>&1 | tee "${FUNCNAME[0]}"_2
+  cd "${SRCDIR}"                                                                                                                   
+  printf srcdir\="${srcdir}"'\n'pkgdir\="${pkgdir}"'\n'srcdest\="${srcdest}"'\n'pwd\=$(pwd)'\n'BUILDDIR\="${BUILDDIR}"'\n'_PACKAGE_DIR\="${_PACKAGE_DIR}"'\n'Current_Function\="${FUNCNAME[1]}"  2>&1 | tee "${FUNCNAME[0]}"_3
+  cd "${BUILDDIR}"                                                                                                                
+  printf srcdir\="${srcdir}"'\n'pkgdir\="${pkgdir}"'\n'srcdest\="${srcdest}"'\n'pwd\=$(pwd)'\n'BUILDDIR\="${BUILDDIR}"'\n'_PACKAGE_DIR\="${_PACKAGE_DIR}"'\n'Current_Function\="${FUNCNAME[1]}"  2>&1 | tee "${FUNCNAME[0]}"_4
+ [[ -z  "${pkgdir}" ]] && export pkgdir="${_PACKAGE_DIR}" 
+#pkgname
+#sed 's#package_##g'  "${FUNCNAME[1]}"
+#srcdest
+#srcdir
+#pkgdir
+
+#srcdir=/var/cache/AurBuild/yay/casey/systemd-liberated-git/systemd-liberated-git/outputs/build/systemd-liberated-git/src
+#pkgdir=/var/cache/AurBuild/yay/casey/systemd-liberated-git/systemd-liberated-git/outputs/build/systemd-liberated-git/pkg/systemd-liberated-git
+#srcdest=
+#pwd=/var/cache/AurBuild/yay/casey/systemd-liberated-git/systemd-liberated-git
+#Current_Function=package_systemd-liberated-git
+}
 
 check(){ meson test -C "${BUILDDIR}" --print-errorlogs;}
 
@@ -48,7 +73,7 @@ check(){ meson test -C "${BUILDDIR}" --print-errorlogs;}
 # /var/cache/AurBuild/yay/casey/systemd-liberated-git/systemd-liberated-git/outputs/build/systemd-liberated-git/pkg/systemd-liberated-git/comp_opts.log
 # /var/cache/AurBuild/yay/casey/systemd-liberated-git/systemd-liberated-git/
 # /var/cache/AurBuild/yay/casey/systemd-liberated-git/systemd-liberated-git/outputs/build/systemd-liberated-git/pkg/systemd-liberated-git/comp_opts.log
-directory="${SRCDIR}"/..
+#directory="${SRCDIR}"/..
 
 #runs after prepare, unsets pkgdir
 pkgver() {
@@ -57,7 +82,8 @@ pkgver() {
   printf "%s.r%s" "${_major}" "$(git rev-list --count HEAD)"
 
 }
-pkgver=$(pkgver)
+
+pkgver="$(pkgver)"
 #noextract=(  "${srcdir}"/test/units/TEST-88-UPGRADE.sh  "${srcdir}"/mkosi/mkosi.conf.d/centos-fedora/mkosi.prepare)
 
 url='https://github.com/Jeffrey-Sardina/systemd'
@@ -88,8 +114,36 @@ _mirrors=( "https://github.com/Jeffrey-Sardina/systemd" "https://codeberg.org/Je
 
 
 
-    prepare() {
-#for package in "${pkgname}"; do mkdir -p "${PKGDIR}";done
+_backports=(
+)
+
+_reverts=(
+)
+
+prepare() {
+
+  cd "${_systemd_src_dir}"
+
+  # Replace cdrom/dialout/tape groups with optical/uucp/storage
+  patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
+
+  # return if not a git repository
+  if ! git status >/dev/null 2>&1; then
+    return
+  fi
+
+  local _c _l
+  for _c in "${_backports[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git cherry-pick --mainline 1 --no-commit "${_c}"
+  done
+  for _c in "${_reverts[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git revert --mainline 1 --no-commit "${_c}"
+  done
+for package in "${pkgname}"; do mkdir -p "${_PACKAGE_DIR}";done
 
   # If the primary clone failed or is empty, try mirrors in order
 #  if [[ ! -d "${srcdir}/.git" ]]; then
@@ -112,9 +166,6 @@ _mirrors=( "https://github.com/Jeffrey-Sardina/systemd" "https://codeberg.org/Je
 
   cd "${srcdir}"
 
-  # Replace cdrom/dialout/tape groups with optical/uucp/storage
-# patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
-
 }
 
 
@@ -126,10 +177,12 @@ makedepends=('acl' 'cryptsetup' 'pam' 'libelf'
              'libxcrypt' 'util-linux' 
              'python-jinja' 'python-lxml' 'shadow' 'git'
              'meson' 'libseccomp' 'audit' 'kexec-tools' 
-             'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 
+             'p11-kit'   'tpm2-tss' 
              'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools'
              'qrencode' 'python-pefile' 'linux-headers')
              optdepends=(
+'systemd'
+'libfido2'
 'libxkbcommon'
 'gperf' 
 'libbpf' 
@@ -149,6 +202,9 @@ makedepends=('acl' 'cryptsetup' 'pam' 'libelf'
 'libpwquality' 
 'rsync'
 'linux-api-headers'
+'pam-selinux' 
+'shadow-selinux' 
+'libselinux'
 )
 conflicts=("mkinitcpio<38-1")
 options=('!strip' '!docs' '!libtool')
@@ -159,8 +215,6 @@ source=("${pkgbase}::https+${_url}")
 #source=("${pkgbase}"::"https://github.com/Jeffrey-Sardina/systemd")
 #source=("${pkgbase}::git+${_url}"
         # bootloader files
-#       'arch.conf'
-#       'loader.conf'
 #       'splash-arch.bmp'::'https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/splash-arch.bmp'
 
 #       # pam configuration
@@ -264,7 +318,7 @@ local _version_info_comp_opts=()
 		shared-lib-tag="${pkgver}"'-'"${pkgrel}"   
 		mode="developer"                       
 	  )
-
+##^^ SET THIS TO RELEASE WHEN INSTALLING ^^##
 # Compile time test options for arch-meson
 local _meson_test_flags=()
 	local _meson_test_flags+=(
@@ -278,6 +332,8 @@ local _meson_test_flags=()
 #DONE INITIALIZING ARRAYS
 # CONFIG BELOW
 
+#https://aur.archlinux.org/pkgbase/systemd-liberated-git
+# The AUR PACKAGE SETS THIS TO ^^               
 
 # Any Arguements with a ' '(space) inside should be surrounded by single and double quotes '""'
 	local _std_comp_opts+=(
@@ -297,6 +353,7 @@ dbuspolicydir="/usr/share/dbus-1/system.d"
 default-dnssec="no"
 default-kill-user-processes="false"
 default-locale='en_US.UTF-8'
+nspawn-locale="en_US.UTF-8"
 localegen-path="/usr/bin/locale-gen"
 dns-over-tls="openssl"
 fallback-hostname='archlinux'
@@ -315,11 +372,11 @@ sbat-distro='arch'
 sbat-distro-summary='"Arch Linux AUR"'
 sbat-distro-pkgname="${pkgname}"
 sbat-distro-version="${pkgver}"
-'sbat-distro-url="https://aur.archlinux.org/pkgbase/systemd-liberated-git"'
+'sbat-distro-url="https://archlinux.org/packages/core/x86_64/systemd'
 imds="disabled"
 importd="disabled"
 binfmt="false"
-default-keymap='us'
+default-keymap="us"
 sysupdate="disabled"
 sysupdated="disabled"
 remote="disabled"
@@ -327,58 +384,92 @@ repart="disabled"
 storagetm="false"
 pstore="false"
 binfmt="false"
-nspawn-locale="en_US.UTF-8"
 fexecve="false"
-
-)
-
-	local _test_comp_opts+=(
-bump-proc-sys-fs-file-max="false"
-bump-proc-sys-fs-nr-open="false"
-
-rc-local="false"
-sysvinit-path="false"
-sysvrcnd-path="false"
+rc-local="no"
+sysvinit-path="no"
+sysvrcnd-path="no"
 translations="false"
 urlify="true"
 analyze="true"
 split-bin="true"
 portabled="false"
 quotacheck="false"
-default-mountfsd-trusted-directories="false"
-compat-mutable-uid-boundaries="true"
 coredump="false"
 backlight="false"
-compat-sysv-interfaces="false"
 sysext="false"
+randomseed="true"
+resolve="true"
+rfkill="true"
+sysusers="true"
+timedated="true"
+timesyncd="true"
+tmpfiles="true"
+userdb="true"
+vconsole="true"
+
+bump-proc-sys-fs-file-max="false"
+bump-proc-sys-fs-nr-open="false"
+default-mountfsd-trusted-directories="false"
+compat-mutable-uid-boundaries="true"
+compat-sysv-interfaces="false"
+)
+
+	local _test_comp_opts+=(
+container-uid-base-max="0x6FFF0000"
+container-uid-base-min="0x00080000"
+foreign-uid-base="0x7FFE0000"
+greeter-uid-max="0x0000ED21"
+greeter-uid-min="0x0000ECA2"
+dynamic-uid-max="0x0000FFEF"
+dynamic-uid-min="0x0000EF00"
+nsresourced="true"
+nss-myhostname="true"
+nss-systemd="true"
+
+importd="disabled"
+
+
+machined="false"
 smack="false"
 
-)
-		local _unset_comp_opts=('#imds-network=disabled'
-#selinux="disabled"
+selinux="disabled"
 
+memory-accounting-default="true"
+localed="true"
+logind="true"
+oomd="true"
+efi="true"
+hwdb="true"
+networkd="true"
+environment-d="true"
+create-log-dirs="true"
 default-network="true"
 first-boot-full-preset="true"
+
+kernel-install="true"
+)
+# I would like to enable selinux, currently fails the build, meson bitches
+		local _unset_comp_opts=(
+                  '#imds-network=disabled'
+
+efi-32="false"
+
 log-trace="false"
-standalone-binaries="bool"
 
 adm-group="bool"
 
-efi="true"
 
-create-log-dirs="bool"
 default-kill-user-processes="bool"
-environment-d="bool"
+
 firstboot="bool"
 gshadow="bool"
 hibernate="bool"
 hostnamed="bool"
-hwdb="bool"
 idn="bool"
 ima="bool"
 initrd="bool"
 ipe="bool"
-ldconfig="bool"
+
 link-boot-shared="bool"
 link-executor-shared="bool"
 link-journalctl-shared="bool"
@@ -387,38 +478,76 @@ link-portabled-shared="bool"
 link-systemctl-shared="bool"
 link-timesyncd-shared="bool"
 link-udev-shared="bool"
-localed="true"
-logind="true"
-machined="bool"
+
+
+
+
 mountfsd="bool"
-nsresourced="bool"
-nss-myhostname="bool"
-nss-systemd="bool"
-oomd="true"
-
-
-memory-accounting-default="true"
-networkd="true"
-
-userdb="true"
-tmpfiles="true"
-randomseed="true"
-resolve="true"
-rfkill="true"
-sysusers="true"
-timedated="true"
-timesyncd="true"
-vconsole="true"
-
 tpm="bool"
 utmp="bool"
 wheel-group="bool"
 xdg-autostart="bool"
 
-kernel-install="true"
 static-libsystemd="true"
 static-libudev="true"
-                  )
+standalone-binaries="bool"
+
+#FEATURE SET
+audit="dis/enabled"
+bpf-framework="dis/enabled"
+dbus="dis/enabled"
+gcrypt="dis/enabled"
+glib="dis/enabled"
+gnutls="dis/enabled"
+homed="dis/enabled"
+kmod="dis/enabled"
+libarchive="dis/enabled"
+libcrypt="dis/enabled"
+libcryptsetup="dis/enabled"
+libcryptsetup-plugins="dis/enabled"
+libidn="dis/enabled"
+libidn2="dis/enabled"
+libiptc="dis/enabled"
+libmount="dis/enabled"
+log-message-verification="dis/enabled"
+lz4="dis/enabled"
+nspawn="dis/enabled"
+nss-mymachines="dis/enabled"
+nss-resolve="dis/enabled"
+polkit="dis/enabled"
+selinux="dis/enabled"
+vmspawn="dis/enabled"
+xz="dis/enabled"
+zlib="dis/enabled"
+zstd="dis/enabled"
+
+ldconfig="true"
+p11kit="enabled"
+tpm2="enabled"
+pcre2="disabled"
+xkbcommon="enabled"
+libfido2="enabled"
+passwdqc="disabled"
+pwquality="disabled"
+bzip2="disabled"
+qrencode="enabled"
+libcurl="enabled"
+ukify="enabled"
+pam="enabled"
+openssl="enabled"
+acl="enabled"
+blkid="enabled"
+elfutils="enabled"
+fdisk="enabled"
+seccomp="enabled"
+html="disabled"
+imds="disabled"
+remote="disabled"
+repart="disabled"
+xenctrl="disabled"
+sysupdate="disabled"
+
+)
 
 # Lazy join arrays
 local _all_comp_opts_pre+=("$(printf "%s\n" "${_version_info_comp_opts[@]}")")
@@ -459,13 +588,19 @@ function _print_meson_options(){
 printf  '\n' _meson_options\:\\n\\n        | tee meson_options.log
 printf "%s\n" "${_meson_options[@]}"    | tee -a meson_options.log
 }
-  arch-meson "${SRCDIR}" "${BUILDDIR}" "${_meson_options[@]}"
+  arch-meson "${SRCDIR}" "${BUILDDIR}" "${_meson_options[@]}" 2>&1 | tee log
 
 }
 
 package_systemd-liberated-git() {
+_OUTPUTS="${SRCDIR}"/outputs
+BUILDDIR="${_OUTPUTS}"/build
+_PKGNAME=$(echo "${FUNCNAME[1]}" | sed 's#package_##g' )
+_PACKAGE_DIR="${_OUTPUTS}"/"${_PKGNAME}"
 where_the_fuck_am_I
-  pkgdesc='system and service manager — liberated fork (no surveillance, git version)'
+
+ [[ -z  "${pkgdir}" ]] && export pkgdir="${_PACKAGE_DIR}" 
+  pkgdesc='system and service manager — Personal Fork'
   license+=(
     'CC0-1.0' 
     'GPL-2.0-or-later' 
@@ -510,24 +645,61 @@ where_the_fuck_am_I
               'libfido2: unlocking LUKS2 volumes with FIDO2 token'
               'libp11-kit: support PKCS#11'
               'tpm2-tss: unlocking LUKS2 volumes with TPM2')
-  backup=(etc/systemd/coredump.conf
-          etc/systemd/homed.conf
-          etc/systemd/journald.conf
-          etc/systemd/journal-remote.conf
-          etc/systemd/journal-upload.conf
-          etc/systemd/logind.conf
-          etc/systemd/networkd.conf
-          etc/systemd/oomd.conf
-          etc/systemd/pstore.conf
-          etc/systemd/resolved.conf
-          etc/systemd/sleep.conf
-          etc/systemd/system.conf
-          etc/systemd/timesyncd.conf
-          etc/systemd/user.conf
-          etc/udev/iocost.conf
-          etc/udev/udev.conf)
+  backup=(
+etc/systemd/coredump.conf
+etc/systemd/homed.conf
+etc/systemd/journald.conf
+etc/systemd/journal-remote.conf
+etc/systemd/journal-upload.conf
+etc/systemd/logind.conf
+etc/systemd/networkd.conf
+etc/systemd/oomd.conf
+etc/systemd/pstore.conf
+etc/systemd/resolved.conf
+etc/systemd/sleep.conf
+etc/systemd/system.conf
+etc/systemd/timesyncd.conf
+etc/systemd/user.conf
+etc/udev/iocost.conf
+etc/udev/udev.conf
+
+usr/lib/kernel/install.conf
+usr/lib/kernel/install.d/50-depmod.install
+usr/lib/kernel/install.d/50-mkinitcpio.install
+usr/lib/kernel/install.d/90-loaderentry.install
+usr/lib/kernel/install.d/90-uki-copy.install
+usr/lib/kernel/uki.conf
+
+etc/kernel/install.conf
+etc/kernel/install.d/50-depmod.install
+etc/kernel/install.d/50-mkinitcpio.install
+etc/kernel/install.d/90-loaderentry.install
+etc/kernel/install.d/90-uki-copy.install
+)
   install=systemd.install
 
+function _create_arch.conf(){
+install -D -m0644 <(cat << EOF 
+## This is just an example config file.
+## Please edit the paths and kernel parameters according to your system.
+
+title   Arch Linux
+linux   /vmlinuz-linux
+initrd  /initramfs-linux.img
+options root=PARTUUID=XXXX rootfstype=XXXX 
+EOF
+) "${pkgdir}"/usr/share/systemd/bootctl/arch.conf
+}
+function _create_loader.conf(){
+install -D -m0644 <(cat << EOF 
+default arch.conf
+EOF
+)  "$pkgdir"/usr/share/systemd/bootctl/loader.conf
+}
+
+  ln -s ../lib/systemd/systemd                    /sbin/init
+
+ arch-meson install -C build --no-rebuild --destdir "${pkgdir}" 
 
 #      we'll create this on installation
    [[ -d "${pkgdir}"/var/log/journal/remote ]] && rmdir "${pkgdir}"/var/log/journal/remote
@@ -546,18 +718,19 @@ where_the_fuck_am_I
      mv "${pkgdir}"/usr/share/man/man1/ukify.1 systemd-ukify/man1/
      mv "${pkgdir}"/usr/lib/kernel/install.d/60-ukify.install systemd-ukify/install.d
    
-     # manpages shipped with systemd-liberated-sysvcompat-git
-     rm "${pkgdir}"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8
-   
+  # manpages shipped with systemd-liberated-sysvcompat-git
+ rm "${pkgdir}"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8
+  # manpages shipped with systemd-sysvcompat
      # executable (symlinks) shipped with systemd-liberated-sysvcompat-git
      rm "${pkgdir}"/usr/bin/{halt,init,poweroff,reboot,shutdown} || echo  'NoFile:'"${pkgdir}"/usr/bin/{halt,init,poweroff,reboot,shutdown}
-   
-     # files shipped with systemd-liberated-resolvconf-git
+
+  # executable (symlinks) shipped with systemd-sysvcompat
+  # files shipped with systemd-resolvconf
      rm "${pkgdir}"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
    
      # tests shipped with systemd-liberated-tests-git
-     install -d -m0755 systemd-tests/
-     mv "${pkgdir}"/usr/lib/systemd/tests systemd-tests/
+#    install -d -m0755 systemd-tests/
+  # tests shipped with systemd-tests (for upstream)
    
      # avoid a potential conflict with [core]/filesystem
      rm "${pkgdir}"/usr/share/factory/etc/{issue,nsswitch.conf}
@@ -565,15 +738,18 @@ where_the_fuck_am_I
        -e '/^C \/etc\/issue/d' "${pkgdir}"/usr/lib/tmpfiles.d/etc.conf
    
      # ship default policy to leave services disabled
-     echo 'disable *' >"${pkgdir}"/usr/lib/systemd/system-preset/99-default.preset
+     echo 'disable *' > "${pkgdir}"/usr/lib/systemd/system-preset/99-default.preset
    
-     install -d -o root -g root -m 2755 "${pkgdir}"/var/log/journal
+#    install -d -o root -g root -m 2755 "${pkgdir}"/var/log/journal
    
      # add example bootctl configuration
-     install -D -m0644 arch.conf "${pkgdir}"/usr/share/systemd/bootctl/arch.conf
-     install -D -m0644 loader.conf "${pkgdir}"/usr/share/systemd/bootctl/loader.conf
-     install -D -m0644 splash-arch.bmp "${pkgdir}"/usr/share/systemd/bootctl/splash-arch.bmp
+_create_arch.conf
+_create_loader.conf
+
+#/usr/share/systemd/bootctl/splash-arch.bmp
+#install -D -m0644 splash-arch.bmp "${pkgdir}"/usr/share/systemd/bootctl/splash-arch.bmp
    
+
      # pacman hooks
      install -D -m0755 systemd-hook "${pkgdir}"/usr/share/libalpm/scripts/systemd-hook
      install -D -m0644 -t "${pkgdir}"/usr/share/libalpm/hooks *.hook
@@ -588,13 +764,30 @@ where_the_fuck_am_I
      install -d -m0755 "${pkgdir}"'/usr/share/licenses/'"${pkgbase}"
 }
 
+  # create a directory for cryptsetup keys
+  install -d -m0700 "$pkgdir"/etc/cryptsetup-keys.d
 
-###Things that below licenses apply to
-#siphash
-#src/basic/linux/*
+#  # handle uncommon license
+#  install -d -m0755 "$pkgdir/usr/share/licenses/$pkgbase"
+#  ln -s -t "$_" /usr/share/doc/systemd/LICENSES/MIT-0.txt
+
+### The original depends array has differently named gcc deps; noteworthy
+# depends=('glibc' 'libgcc' 'libgcc_s.so' 'libgcrypt' 'lz4' 'xz'  'zstd')
+  # symlink kernel-install to installkernel
+  install -D -m0740 kernel-install "$pkgdir"/sbin/installkernel
+  install -D -m0640 kernel-install.8.gz "$pkgdir"/usr/share/man/man8/installkernel.8.gz
+
+
+
 
 package_systemd-liberated-libs-git() {
+_OUTPUTS="${SRCDIR}"/outputs
+BUILDDIR="${_OUTPUTS}"/build
+_PKGNAME=$(echo "${FUNCNAME[1]}" | sed 's#package_##g' )
+_PACKAGE_DIR="${_OUTPUTS}"/"${_PKGNAME}"
 where_the_fuck_am_I
+cd "${_OUTPUTS}"
+ [[ -z  "${pkgdir}" ]] && export pkgdir="${_PACKAGE_DIR}" 
   pkgdesc='systemd client libraries — liberated fork (git version)'
   depends=('glibc' 'gcc-libs' 'libcap'  'zstd')
   optdepends=('libgcrypt' 'lz4' 'xz')
@@ -608,13 +801,18 @@ where_the_fuck_am_I
   replaces=('libsystemd')
 
   install -d -m0755        "${pkgdir}"/usr/share/man
-  mv systemd-libs/lib      "${pkgdir}"/usr/lib
-  mv systemd-libs/include  "${pkgdir}"/usr/include
-  mv systemd-libs/man3     "${pkgdir}"/usr/share/man/man3
+  mv build/systemd-libs/lib      "${pkgdir}"/usr/lib
+  mv build/systemd-libs/include  "${pkgdir}"/usr/include
+  mv build/systemd-libs/man3     "${pkgdir}"/usr/share/man/man3
 }
 
 package_systemd-liberated-resolvconf-git() {
 where_the_fuck_am_I
+_OUTPUTS="${SRCDIR}"/outputs
+BUILDDIR="${_OUTPUTS}"/build
+_PKGNAME=$(echo "${FUNCNAME[1]}" | sed 's#package_##g' )
+_PACKAGE_DIR="${_OUTPUTS}"/"${_PKGNAME}"
+ [[ -z  "${pkgdir}" ]] && export pkgdir="${_PACKAGE_DIR}" 
   pkgdesc='systemd resolvconf replacement — liberated fork (git version)'
   depends=("systemd-liberated-git=${pkgver}")
   provides=('openresolv' 'resolvconf')
@@ -622,44 +820,43 @@ where_the_fuck_am_I
   conflicts=('resolvconf' 'systemd-resolvconf' 'systemd-resolvconf-git')
 
   install -d -m0755     "${pkgdir}"/usr/bin
-  ln -s resolvectl      "${pkgdir}"/usr/bin/resolvconf
+  install -d -m0755 build/resolvectl      "${pkgdir}"/usr/bin/resolvconf
 
   install -d -m0755     "${pkgdir}"/usr/share/man/man1
-  ln -s resolvectl.1.gz "${pkgdir}"/usr/share/man/man1/resolvconf.1.gz
+  install -d -m0644 build/resolvectl.1.gz "${pkgdir}"/usr/share/man/man1/resolvconf.1.gz
 }
 
 package_systemd-liberated-sysvcompat-git() {
+_OUTPUTS="${SRCDIR}"/outputs
+BUILDDIR="${_OUTPUTS}"/build
+_PKGNAME=$(echo "${FUNCNAME[1]}" | sed 's#package_##g' )
+_PACKAGE_DIR="${_OUTPUTS}"/"${_PKGNAME}"
 where_the_fuck_am_I
+ [[ -z  "${pkgdir}" ]] && export pkgdir="${_PACKAGE_DIR}" 
   pkgdesc='sysvinit compat for systemd — liberated fork (git version)'
   conflicts=('sysvinit' 'systemd-sysvcompat' 'systemd-sysvcompat-git')
   depends=("systemd-liberated-git=${pkgver}")
   provides=("systemd-sysvcompat=${pkgver}" "systemd-sysvcompat-git=${pkgver}")
 
   install -D -m0644 -t "${pkgdir}"/usr/share/man/man8 \
-    "${BUILDDIR}"/man/{halt,poweroff,reboot,shutdown}.8
+    build/man/{halt,poweroff,reboot,shutdown}.8
 
   install -d -m0755                               "${pkgdir}"/usr/bin
-  ln -s ../lib/systemd/systemd                    "${pkgdir}"/usr/bin/init
   for tool in halt poweroff reboot shutdown; do
     ln -s systemctl                               "${pkgdir}"/usr/bin/"${tool}"
   done
 }
 
-package_systemd-liberated-tests-git() {
-where_the_fuck_am_I
-  pkgdesc='systemd tests — liberated fork (git version)'
-  conflicts=('systemd-tests' 'systemd-tests-git')
-  provides=("systemd-tests=${pkgver}" "systemd-tests-git=${pkgver}")
-  depends=("systemd=${pkgver}")
-
-  install -d -m0755      "${pkgdir}"/usr/lib/systemd
-  mv systemd-tests/tests "${pkgdir}"/usr/lib/systemd/tests
-}
 
 package_systemd-liberated-ukify-git() {
+_OUTPUTS="${SRCDIR}"/outputs
+BUILDDIR="${_OUTPUTS}"/build
+_PKGNAME=$(echo "${FUNCNAME[1]}" | sed 's#package_##g' )
+_PACKAGE_DIR="${_OUTPUTS}"/"${_PKGNAME}"
 where_the_fuck_am_I
+ [[ -z  "${pkgdir}" ]] && export pkgdir="${_PACKAGE_DIR}" 
   echo  "${pkgdir}"\\n
-  pkgdesc='Combine kernel and initrd into a signed UKI — liberated fork (git version)'
+  pkgdesc='Combine kernel and initrd into a signed Unified Kernel Image'
   conflicts=('systemd-ukify' 'systemd-ukify-git')
   provides=('ukify')
   provides+=("systemd-ukify=${pkgver}" "systemd-ukify-git=${pkgver}")
@@ -668,10 +865,21 @@ where_the_fuck_am_I
               'sbsigntools: Sign the embedded kernel')
 
   install -d -m0755           "${pkgdir}"/usr/{lib/kernel,share/man}
-  mv systemd-ukify/bin        "${pkgdir}"/usr/bin
+  mv systemd-ukify/bin        "${pkgdir}"usr/bin
   mv systemd-ukify/systemd    "${pkgdir}"/usr/lib/systemd
   mv systemd-ukify/man1       "${pkgdir}"/usr/share/man/man1
-  mv systemd-ukify/install.d  "${pkgdir}"/usr/lib/kernel/install.d
+  mv systemd-ukify/install.d  "${pkgdir}"/etc/kernel/install.d
 }
 
+package_systemd-liberated-tests-git() {
+where_the_fuck_am_I
+ [[ -z  "${pkgdir}" ]] && export pkgdir="${_PACKAGE_DIR}" 
+  pkgdesc='systemd tests — liberated fork (git version)'
+  conflicts=('systemd-tests' 'systemd-tests-git')
+  provides=("systemd-tests=${pkgver}" "systemd-tests-git=${pkgver}")
+  depends=("systemd=${pkgver}")
+
+  install -d -m0755      "${pkgdir}"/usr/lib/systemd
+  mv systemd-tests/tests "${pkgdir}"/usr/lib/systemd/tests
+}
 # vim:ft=sh syn=sh et sw=2:
