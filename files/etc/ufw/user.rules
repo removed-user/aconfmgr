@@ -1,0 +1,82 @@
+*filter
+:ufw-user-input - [0:0]
+:ufw-user-output - [0:0]
+:ufw-user-forward - [0:0]
+:ufw-before-logging-input - [0:0]
+:ufw-before-logging-output - [0:0]
+:ufw-before-logging-forward - [0:0]
+:ufw-user-logging-input - [0:0]
+:ufw-user-logging-output - [0:0]
+:ufw-user-logging-forward - [0:0]
+:ufw-after-logging-input - [0:0]
+:ufw-after-logging-output - [0:0]
+:ufw-after-logging-forward - [0:0]
+:ufw-logging-deny - [0:0]
+:ufw-logging-allow - [0:0]
+:ufw-user-limit - [0:0]
+:ufw-user-limit-accept - [0:0]
+
+### Description: 
+### CLI
+### sudo ufw allow out to any port 53
+### Config (non) Equivalence; The below is more spacific and granular
+### (-A ufw-user-output -p udp --dport 53 -j ACCEPT)
+
+### RULES ###
+#QUIC
+-A ufw-user-output -p udp           443 -j ACCEPT
+
+## DNS ##
+# Standard
+-A ufw-user-output -p tcp --dport 53    -j ACCEPT
+-A ufw-user-output -p udp --dport 53    -j ACCEPT
+#DoH + HTTPS
+-A ufw-user-output -p tcp --dport 443   -j ACCEPT
+#DoT
+-A ufw-user-output -p tcp --dport 853   -j ACCEPT
+# mDNS + Some Recursive resolvers and dns-cache 
+-A ufw-user-output -p udp --dport 5353  -j ACCEPT
+
+#HTTP/S + OSCP/CRL Checks/Required even when HTTPS only
+-A ufw-user-output -p tcp --dport 80    -j ACCEPT
+
+## NTP ##
+-A ufw-user-output -p udp --dport 123   -j ACCEPT
+
+## VPN ##
+# OpenVPN
+A ufw-user-output -p udp --dport 1194   -j ACCEPT
+## WireGuard ##
+-A ufw-user-output -p udp --dport 51820 -j ACCEPT
+# IPsec
+# NAT-T (NAT Traversal)  ::  Critical if not behind a Router, wraps your data in a NAT Friendly packet
+-A ufw-user-output -p udp --dport 4500 -j ACCEPT
+# IKE   (Internet Key Exchange)      
+-A ufw-user-output -p udp --dport 500  -j ACCEPT
+
+## DHCP ##
+-A ufw-user-output -p  udp --dport 67  -j ACCEPT
+-A ufw-user-output -p  udp --dport 68  -j ACCEPT
+
+
+
+### END RULES ###
+
+### LOGGING ###
+-A ufw-after-logging-input -j LOG --log-prefix "[UFW BLOCK] " -m limit --limit 3/min --limit-burst 10
+-A ufw-after-logging-output -j LOG --log-prefix "[UFW ALLOW] " -m limit --limit 3/min --limit-burst 10
+-A ufw-after-logging-forward -j LOG --log-prefix "[UFW BLOCK] " -m limit --limit 3/min --limit-burst 10
+-A ufw-logging-deny -m conntrack --ctstate INVALID -j LOG --log-prefix "[UFW AUDIT INVALID] " -m limit --limit 3/min --limit-burst 10
+-A ufw-logging-deny -j LOG --log-prefix "[UFW BLOCK] " -m limit --limit 3/min --limit-burst 10
+-A ufw-logging-allow -j LOG --log-prefix "[UFW ALLOW] " -m limit --limit 3/min --limit-burst 10
+-I ufw-before-logging-input -j LOG --log-prefix "[UFW AUDIT] " -m conntrack --ctstate NEW -m limit --limit 3/min --limit-burst 10
+-I ufw-before-logging-output -j LOG --log-prefix "[UFW AUDIT] " -m conntrack --ctstate NEW -m limit --limit 3/min --limit-burst 10
+-I ufw-before-logging-forward -j LOG --log-prefix "[UFW AUDIT] " -m conntrack --ctstate NEW -m limit --limit 3/min --limit-burst 10
+### END LOGGING ###
+
+### RATE LIMITING ###
+-A ufw-user-limit -m limit --limit 3/minute -j LOG --log-prefix "[UFW LIMIT BLOCK] "
+-A ufw-user-limit -j REJECT
+-A ufw-user-limit-accept -j ACCEPT
+### END RATE LIMITING ###
+COMMIT
