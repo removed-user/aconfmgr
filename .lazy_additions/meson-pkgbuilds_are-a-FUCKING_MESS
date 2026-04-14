@@ -1,0 +1,73 @@
+#!/bin/bash -ex
+# Highly opinionated wrapper for Arch Linux packaging
+
+exec meson setup \
+  --prefix        /usr \
+  --libexecdir    lib \
+  --sbindir       bin \
+  --buildtype     plain \
+  --auto-features enabled \
+  --wrap-mode     nodownload \
+  -D              b_pie=true \
+  -D              python.bytecompile=1 \
+  "$@"
+#Problems 
+# theres a lot going on here that you don't see
+
+#
+# 1): Meson Swapped the order you give source and build directories at some point for no fucking reason; Breaking every PKGBUILD that uses meson; So...
+# [Old Way]:Wrong 
+
+# sourcedir builddir
+#
+# [New Way]:Correct 
+
+# builddir sourcedir
+#
+# 2): Meson changed the functionality of their only command at some point for no fucking reason; Breaking every PKGBUILD that uses meson; So...
+#
+# To "setup" a build
+# [Old Way]:Wrong 
+# In the build() function you often see this pattern
+#
+# meson build $pkgname
+#
+# Or even 
+#
+# meson $pkgname build (spooky)
+#
+# [New Way]:Correct 
+# Either:
+# meson setup $1 $2 
+# OR
+# arch-meson $1 $2
+# Okay - The above... might work, depending on how your git repo is set; but is probably broken
+# 
+# When it works it ignores your local srcdir, creates a directory called build, clones your repo into it; thats (maybe) your srcdir
+#
+# unless you set a name for srcdir; in which case srcdir does not equal srcdir and instead is build/$RepoName/src/$MaybeSrcDir which maybe has the source in it.
+#
+# then tries to build your source in the BuildDirectory: under build/$RepoName or sometimes build/build/$YourRepo build/$YourRepo/build/ or some other abomination
+#
+# This is stupid enough as is, but worse, when you use setup and configure... that actually configures your source... but when you run build... 
+# it re-clones the source and ignores all of the options that you set in the outer sourcedir, and uses the meson_options, or .build from the repo instead of the one you just configured
+#
+#
+#
+#
+# 4):Absolutely Do Not 
+# Something like this 
+# meson install -C $litterally_any_variable
+#
+# This may work better by just failing if not given a variable (Which is massively prefferable)
+#
+# meson install --destdir=$litterally_any_variable
+#
+# Might also try (meson setup . build)
+#
+# Whereas THIS (meson install $litterally_any_variable)
+# LITERALLY just installs the package... on the current host - WITH ALL OPTIONS ENABLED
+#
+# With a large core/critical package like the kernel or systemd this may... build systemd for windows,mac, linux, the atari and playstations, with support for arbitrary binary formats, bpf and remote uart consoles over gsm, bluetooth usb and mobile lines, while replacing all of your pkg_config vars with "defaults", and using androids binder for the ipc of your journald-remote instance and running a netboot server that replaces every iso you download with more of this bullsh*t
+#
+# Ask me how i know...
