@@ -71,3 +71,9 @@ exec meson setup \
 # With a large core/critical package like the kernel or systemd this may... build systemd for windows,mac, linux, the atari and playstations, with support for arbitrary binary formats, bpf and remote uart consoles over gsm, bluetooth usb and mobile lines, while replacing all of your pkg_config vars with "defaults", and using androids binder for the ipc of your journald-remote instance and running a netboot server that replaces every iso you download with more of this bullsh*t
 #
 # Ask me how i know...
+meson compile -C build
+meson -C build install --destdir=tmp
+meson configure build -D licensedir=/usr/share/$pkgname
+meson -C build install --destdir=tmp
+# '[[ -z $I_HAVE_CONFIGURED_THIS_PACKAGE  ]] && /bin/bash# basically a break if var is set for meson wrapper/drop in replacement for all pkgbuilds with meson '
+# Add a check if this is interactive shell or PKGBUILD and conditionally execute regular meson or my wrapper
