@@ -2,7 +2,6 @@
 # Based on systemd-git by Thorsten Toepper <atsutane-aur at freethoughts dot de>
 # Contributor: Yurii Kolesnykov <root@yurikoles.com>
 # Based on core/systemd by Christian Hesse <mail@eworm.de>
-#
 # Liberated systemd -- systemd fork with surveillance enablement removed.
 # Upstream fork: https://github.com/Jeffrey-Sardina/systemd
 
@@ -18,35 +17,34 @@ pkgname=('systemd-liberated-git'
          'systemd-liberated-ukify-git')
 pkgdesc='systemd fork with surveillance enablement removed (git version)'
 pkgrel=1
-_prev_pkgver=$(echo "${pkgver}")
 arch=('x86_64')
 license=('LGPL-2.1-or-later' 'GPL-2.0')
 CARCH="x86_64"
-
 SRCDIR=/var/cache/AurBuild/Repos/Systemd/"${pkgbase}"
 SRCDEST=${SRCDIR}
-
+#unset srcdir pkgdir 
 # set in main makepkg.conf SRCDEST=/var/cache/AurBuild/Repos/systemd-liberated-git/"${pkgbase}"
-__LOCAL_REPO_NAME="Systemd"
+#__LOCAL_REPO_NAME="Systemd"
 
 
+pkgver=261.r
+_prev_pkgver="${pkgver}"
 
 
+#function where_the_fuck_am_I() {
+#_PKGNAME=$(echo "${FUNCNAME[1]}" | sed 's#package_##g' )
 
-function where_the_fuck_am_I() {
-_PKGNAME=$(echo "${FUNCNAME[1]}" | sed 's#package_##g' )
-
-function __print_vars(){
-  printf '\n'srcdir\="${srcdir}"'\n'pkgdir\="${pkgdir}"'\n'srcdest\="${srcdest}"'\n'pwd\=$(pwd)'\n'BUILDDIR\="${BUILDDIR}"'\n'Current_Function\="${FUNCNAME[1]}"
-}
-__print_vars 2>&1 | tee "${FUNCNAME[0]}"_1
-  cd "${srcdir}" 
-__print_vars 2>&1 | tee "${FUNCNAME[0]}"_2
-  cd "${SRCDIR}"
-__print_vars 2>&1 | tee "${FUNCNAME[0]}"_3
-  cd "${BUILDDIR}"
-__print_vars 2>&1 | tee "${FUNCNAME[0]}"_4
-}
+#function __print_vars() {
+#  printf '\n'srcdir\="${srcdir}"'\n'pkgdir\="${pkgdir}"'\n'srcdest\="${srcdest}"'\n'pwd\=$(pwd)'\n'BUILDDIR\="${BUILDDIR}"'\n'Current_Function\="${FUNCNAME[1]}"
+#}
+#__print_vars 2>&1 | tee "${FUNCNAME[0]}"_1
+#  cd "${srcdir}" 
+#__print_vars 2>&1 | tee "${FUNCNAME[0]}"_2
+#  cd "${SRCDIR}"
+#__print_vars 2>&1 | tee "${FUNCNAME[0]}"_3
+#  cd "${BUILDDIR}"
+#__print_vars 2>&1 | tee "${FUNCNAME[0]}"_4
+#}
 
 # Either openssl or gnutls, it's automatically added as a makedep
 # because whichever you choose is required, so it has to be set early
@@ -61,16 +59,14 @@ _SELECTED_SSL_FRAMEWORK_=('openssl=disabled' 'gnutls=enabled')
     ;;
 esac
 
-#check(){ meson test -C build --print-errorlogs;}
+#check() { meson test -C build --print-errorlogs;}
 
 pkgver() {
 #runs after prepare, unsets or sets up pkgdir
 # Strip everything from ~ or . onwards (e.g. "261~devel" -> "261")
-  cd "${SRCDIR}"
   local _major=$(cat "${SRCDIR}"/meson.version | sed 's/[~.].*//g' )
   printf "%s.r%s" "${_major}" "$(git rev-list --count HEAD)"
 }
-pkgver="$(pkgver)"
 
 
 
@@ -79,7 +75,7 @@ pkgver="$(pkgver)"
 
 
 
-url='https://github.com/Jeffrey-Sardina/systemd'
+#url='https://github.com/Jeffrey-Sardina/systemd'
 # Mirror fallback URLs — uncomment your preferred source if GitHub is unavailable
 
 
@@ -92,7 +88,7 @@ url='https://github.com/Jeffrey-Sardina/systemd'
 #https://aur.archlinux.org/pkgbase/systemd-liberated-git.git
   # The AUR PACKAGE ^^               
 
-  #function __get_source_status(){
+  #function __get_source_status() {
     #     # return if not a git repository
     #       if ! git status >/dev/null 2>&1; then
     #         return
@@ -171,17 +167,15 @@ echo "message"
 #   done
 # for package in "${pkgname}"; do mkdir -p "${_PACKAGE_DIR}";done
 
-prepare() {
+#prepare() {
 #
-  mv "${srcdir}"/meson_options.txt "${srcdir}"/.prev_options.md || echo "already moved"
-  cd "${srcdir}"
+# mv "${srcdir}"/meson_options.txt "${srcdir}"/.prev_options.md || echo "already moved"
 #
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
-  patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
+#  patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
 
-  cd "${srcdir}"
 #
-}
+#}
 
 makedepends=(
             'acl' 'cryptsetup' 'pam' 'libelf'
@@ -197,7 +191,6 @@ makedepends=(
 optdepends=(
               'iptables'
               'gnutls'
-              'systemd'
               'libfido2'
               'libxkbcommon'
               'gperf' 
@@ -227,7 +220,7 @@ conflicts=("mkinitcpio<38-1")
 options=('!strip' '!docs' '!libtool')
 
 #'0001-Use-Arch-Linux-device-access-groups.patch'
-source=("${pkgbase}::https+${_url}")
+#source=("${pkgbase}::https+${_url}")
 
 #source=("${pkgbase}"::"https://github.com/Jeffrey-Sardina/systemd")
 #source=("${pkgbase}::git+${_url}"
@@ -319,7 +312,7 @@ local _version_info_comp_opts=()
 		version-tag="${pkgver}"'-'"${pkgrel}"'-arch'
 		vcs-tag="true"                         
 		shared-lib-tag="${pkgver}"'-'"${pkgrel}"   
-		mode="developer"                       
+		mode="plain"                       
 	  )
 ##^^ SET MODE TO RELEASE WHEN INSTALLING ^^##
 
@@ -430,6 +423,11 @@ default-mountfsd-trusted-directories="false"
 compat-mutable-uid-boundaries="true"
 compat-sysv-interfaces="false"
 )
+
+#       c_args="${CFLAGS}"
+#  c_link_args="${LDFLAGS}"
+#     cpp_args="${CXXFLAGS}"
+#cpp_link_args="${LDFLAGS}"
 
 	local _test_comp_opts+=(
 container-uid-base-max="0x6FFF0000"
@@ -550,12 +548,12 @@ sysupdate="disabled"
   # And strip the last "(problem causing)" index of the array 
     unset '_all_comp_opts_pre[-1]'
 
-function flagify(){
+function flagify() {
 readarray -t _all_comp_opts < <(for item in "${_all_comp_opts_pre[@]}";do sed 's#^#\-D#g' <<< "$item"; done)
 }                                            
 flagify                                      
 
-function _clean_opts(){
+function _clean_opts() {
 readarray -t _meson_options < <(for item in "${_all_comp_opts[@]}";do sed 's#\-D$##g' <<< "$item"; done)
 }
 _clean_opts
@@ -568,32 +566,31 @@ build() {
 
 #flagify
 #_clean_opts
-
-
-
 #_validate_options() {
 #  _require openssl || gnutls
 #}
 #_validate_options
 
-function _print_all_comp_opts(){
-if [[ "${FUNCNAME[1]}" == "build" ]]
-then
-printf  '\n' _all_comp_opts\:\\n\\n      | tee    compile_time_options.log
-printf "%s\n" "${_all_comp_opts[@]}"     | tee -a compile_time_options.log
-else
-printf  '\n' _all_comp_opts\:\\n\\n      | tee    "${pkgdir}"/compile_time_options.log
-printf "%s\n" "${_all_comp_opts[@]}"     | tee -a "${pkgdir}"/compile_time_options.log
-fi
-}
-_print_all_comp_opts
-function _print_meson_options(){
-printf  '\n' _meson_options\:\\n\\n        | tee meson_options.log
-printf "%s\n" "${_meson_options[@]}"    | tee -a meson_options.log
-}
-
+#function _print_all_comp_opts() {
+#if [[ "${FUNCNAME[1]}" == "build" ]]
+#then
+#printf  '\n' _all_comp_opts\:\\n\\n      | tee    compile_time_options.log
+#printf "%s\n" "${_all_comp_opts[@]}"     | tee -a compile_time_options.log
+#else
+#printf  '\n' _all_comp_opts\:\\n\\n      | tee    "${pkgdir}"/compile_time_options.log
+#printf "%s\n" "${_all_comp_opts[@]}"     | tee -a "${pkgdir}"/compile_time_options.log
+#fi
+#}
+#_print_all_comp_opts
+#function _print_meson_options() {
+#printf  '\n' _meson_options\:\\n\\n        | tee meson_options.log
+#printf "%s\n" "${_meson_options[@]}"    | tee -a meson_options.log
+#}
+cd ${srcdir}
+meson setup build systemd-liberated-git \
+--prefix=/usr --libexecdir=lib --bindir=bin --sbindir=sbin --buildtype=plain --auto-features=auto --wrap-mode=nodownload -D b_pie=true -D python.bytecompile=1 -D licensedir=/usr/share/licenses
+#"${_meson_options[@]}"
 meson configure build "${_meson_options[@]}"
- meson compile -C build  2>&1 | tee log
 
 }
 
@@ -614,28 +611,31 @@ license+=(
 # depends=('glibc' 'libgcc' 'libgcc_s.so' 'libgcrypt' 'lz4' 'xz'  'zstd')
   # symlink kernel-install to installkernel
 
-  depends=("systemd-liberated-libs-git=${pkgver}"
+  depends=(
+           "systemd-liberated-libs-git=${pkgver}"
            'acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 
            'kbd' 'kmod' 'hwdata' 'libcap' 'libcap.so'
            'libxcrypt' 'libcrypt.so' 'libidn2' 'pam'
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
            'libmount.so' 
-           "${SELECTED_SSL_FRAMEWORK}" 'libcrypto.so' 'libssl.so')
+           "${SELECTED_SSL_FRAMEWORK}" 'libcrypto.so' 'libssl.so'
+         )
+
   provides=('nss-myhostname' "systemd-tools=${pkgver}" "udev=${pkgver}")
-  provides+=("systemd=${pkgver}" "systemd-git=${pkgver}")
+  provides+=("systemd=${pkgver}" "systemd-git=${pkgver}" systemd )
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
   conflicts=('nss-myhostname' 'systemd-tools' 'udev')
   conflicts+=('systemd' 'systemd-git')
   optdepends=(
               'libmicrohttpd: systemd-journal-gatewayd and systemd-journal-remote'
-              'libgcrypt' 
-              'lz4' 
-              'xz' 
-              'pcre2'
-              'audit'
-              'dbus'
-              'dbus-units' 
+              'libgcrypt: General purpose cryptographic library based on the code from GnuPG'
+              'lz4: Extremely fast compression algorithm'
+              'xz: Library and command line tools for XZ and LZMA compressed files'
+              'pcre2: A library that implements Perl 5-style regular expressions. 2nd version'
               'libaudit.so'
+              'audit: Userspace components of the audit framework'
+              'dbus: Freedesktop.org message bus system'
+              'dbus-units: D-Bus service units (default provider)'
               'apparmor: additional security features'
               'quota-tools: kernel-level quota management'
               'systemd-liberated-sysvcompat-git: symlink package to provide sysvinit binaries'
@@ -644,14 +644,22 @@ license+=(
               'curl: systemd-journal-upload, machinectl pull-tar and pull-raw'
               'gnutls: systemd-journal-gatewayd and systemd-journal-remote'
               'qrencode: show QR codes'
-              'iptables: firewall features'
               'libarchive: convert DDIs to tarballs'
+              'iptables: firewall features'
               'libbpf: support BPF programs'
               'libpwquality: check password quality'
               'libfido2: unlocking LUKS2 volumes with FIDO2 token'
               'libp11-kit: support PKCS#11'
               'tpm2-tss: unlocking LUKS2 volumes with TPM2'
             )
+
+
+
+
+
+
+
+
 backup=(
 etc/systemd/coredump.conf
 etc/systemd/homed.conf
@@ -683,6 +691,16 @@ etc/kernel/install.d/50-mkinitcpio.install
 etc/kernel/install.d/90-loaderentry.install
 etc/kernel/install.d/90-uki-copy.install
 )
+
+if [[ -z "${pkgdir}" ]] && [[ ! -d "${pkgdir}" ]]
+then
+echo '{CRITICAL ERROR} $pkgdir is NOT SET:EXITING'
+exit 1 
+else
+meson install -C "${BUILDDIR}" --no-rebuild --only-changed --destdir="${pkgdir}" 2>&1 | tee log
+fi
+
+
   install=systemd.install
 
 
@@ -690,10 +708,10 @@ etc/kernel/install.d/90-uki-copy.install
 
 
 
-function _Handlers(){
+function _Handlers() {
   echo ""
-    function _Handle_Core_Defaults(){
-        function _CreATe_arch.conf(){
+    function _Handle_Core_Defaults() {
+        function _CreATe_arch.conf() {
         install -D -m0644 <(cat << EOF  
         ## This is just an example config file.
         ## Please edit the paths and kernel parameters according to your system.
@@ -706,7 +724,7 @@ EOF
         )  "${pkgdir}"/usr/share/systemd/bootctl/arch.conf
         }
 
-        function _CreATe_loader.conf(){
+        function _CreATe_loader.conf() {
         install -D -m0644 <(cat << EOF 
         default arch.conf
 EOF
@@ -727,7 +745,7 @@ EOF
          rm "${pkgdir}"/usr/share/factory/etc/{issue,nsswitch.conf}
          sed -i -e '/^C \/etc\/nsswitch\.conf/d' \
            -e '/^C \/etc\/issue/d' "${pkgdir}"/usr/lib/tmpfiles.d/etc.conf
-    
+
          # ship default policy to leave services disabled
          echo 'disable *' > "${pkgdir}"/usr/lib/systemd/system-preset/99-default.preset
     
@@ -754,7 +772,7 @@ EOF
 
        }
 
-    function _Handle_systemd-libs(){
+    function _Handle_systemd-libs() {
          # runtime libraries shipped with systemd-libs
          install -d -m0755 systemd-libs/lib/
          mv "${pkgdir}"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs/lib/
@@ -763,7 +781,7 @@ EOF
          mv "${pkgdir}"/usr/share/man/man3 systemd-libs/man3
     }
 
-    function _Handle_systemd-ukify(){
+    function _Handle_systemd-ukify() {
          # ukify shipped in systemd-ukify
          install -d -m0755 systemd-ukify/{bin,systemd,man1,install.d}
          mv "${pkgdir}"/usr/bin/ukify systemd-ukify/bin/
@@ -772,7 +790,7 @@ EOF
          mv "${pkgdir}"/usr/lib/kernel/install.d/60-ukify.install systemd-ukify/install.d
     }
     
-    function _Handle_sysvcompat(){
+    function _Handle_sysvcompat() {
       # shipped with systemd-sysvcompat
        # Manpages 
          rm "${pkgdir}"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8
@@ -781,18 +799,18 @@ EOF
         || echo  'NoFile:'"${pkgdir}"/usr/bin/{halt,init,poweroff,reboot,shutdown}
     }
     
-    function _Handle_resolvconf(){
+    function _Handle_resolvconf() {
       # files shipped with systemd-resolvconf
          rm "${pkgdir}"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
     }
     
-    function _Handle_systemd-tests(){
+    function _Handle_systemd-tests() {
          # tests shipped with systemd-tests
         install -d -m0755 systemd-tests/
       # tests shipped with systemd-tests (for upstream)
     }
     
-    function _Handle_Remote_Journald(){
+    function _Handle_Remote_Journald() {
          # Systemd-Journal-Remote Handling; Re-Created on install (if enabled)
        [[ -d "${pkgdir}"/var/log/journal/remote ]] && rmdir "${pkgdir}"/var/log/journal/remote
     }
@@ -896,7 +914,11 @@ where_the_fuck_am_I
   provides=("systemd-tests=${pkgver}" "systemd-tests-git=${pkgver}")
   depends=("systemd=${pkgver}")
 
+if [[ install-tests="true" ]]
+then
   install -d -m0755      "${pkgdir}"/usr/lib/systemd
   mv systemd-tests/tests "${pkgdir}"/usr/lib/systemd/tests
+else rm -rf systemd-tests || /bin/true
+fi
 }
 # vim:ft=sh syn=sh et sw=2:
