@@ -1,0 +1,12 @@
+shopt -s interactive_comments
+declare -gx LANG="en_US"
+
+declare -g SUDO_GID=0
+declare -g SUDO_UID=0
+declare -xg PKG_CONFIG_PATH=/etc/build_config.d/pkg-config
+declare -xg CPU_FAMILY=X86_64
+declare -xg CPU=X86_64
+
+export EDITOR=nvim
+export VISUAL="$EDITOR"
+export PAGER=bat
